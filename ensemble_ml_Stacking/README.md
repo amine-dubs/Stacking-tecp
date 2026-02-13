@@ -436,9 +436,9 @@ Le notebook génère automatiquement **14+ visualisations par dataset** :
 
 ## Auteur
 
-- **Nom**: [Votre nom]
-- **GitHub**: [votre-username](https://github.com/votre-username)
-- **Contact**: [votre-email@example.com]
+- **Nom**: Bellatreche Mohamed Amine
+- **GitHub**: [aminedubs](https://github.com/amine-dubs)
+- **Contact**: aminedubs@gmail.com
 
 ---
 
