@@ -1,0 +1,811 @@
+\documentclass[aspectratio=169, 11pt]{beamer}
+
+% --- Packages ---
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{amsmath}
+\usepackage{multirow}
+\usepackage{colortbl}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usepackage{hyperref}
+\usepackage{array}
+\usepackage{adjustbox}
+
+% --- Theme ---
+\usetheme{Madrid}
+\usecolortheme{seahorse}
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{footline}{
+  \leavevmode
+  \hbox{
+    \begin{beamercolorbox}[wd=.33\paperwidth,ht=2.5ex,dp=1ex,center]{author in head/foot}
+      \usebeamerfont{author in head/foot}\insertshortauthor
+    \end{beamercolorbox}
+    \begin{beamercolorbox}[wd=.44\paperwidth,ht=2.5ex,dp=1ex,center]{title in head/foot}
+      \usebeamerfont{title in head/foot}\insertshorttitle
+    \end{beamercolorbox}
+    \begin{beamercolorbox}[wd=.23\paperwidth,ht=2.5ex,dp=1ex,right]{date in head/foot}
+      \usebeamerfont{date in head/foot}\insertframenumber{} / \inserttotalframenumber\hspace*{2ex}
+    \end{beamercolorbox}
+  }
+}
+
+% --- Couleurs personnalisees ---
+\definecolor{stackred}{RGB}{231, 76, 60}
+\definecolor{stackblue}{RGB}{52, 152, 219}
+\definecolor{stackgreen}{RGB}{39, 174, 96}
+\definecolor{stackorange}{RGB}{243, 156, 18}
+\definecolor{stackpurple}{RGB}{142, 68, 173}
+\definecolor{lightgray}{RGB}{245, 245, 245}
+\definecolor{darktext}{RGB}{44, 62, 80}
+
+% --- Metadata ---
+\title[Stacking Ensemble]{Stacking Generalis\'e \`a 2 Niveaux :\\
+Analyse Comparative Multi-Datasets}
+\subtitle{Techniques Pr\'edictives -- Projet de Fin de Module}
+\author[Bellatreche \& Rezegia]{Mohamed Amine \textsc{Bellatreche} \and Soltan \textsc{Rezegia}}
+\institute[USTO]{Universit\'e USTO -- ING 4 Data Science\\[2pt]
+\textit{Module~: Techniques Pr\'edictives}\\
+\textit{Encadr\'e par~: Pr. \textsc{Bouziane} H.}}
+\date{Ann\'ee universitaire 2024--2025}
+
+\begin{document}
+
+% ============================================================
+% PAGE DE GARDE
+% ============================================================
+\begin{frame}[plain]
+\titlepage
+\end{frame}
+
+% ============================================================
+% SOMMAIRE
+% ============================================================
+\begin{frame}{Sommaire}
+\tableofcontents
+\end{frame}
+
+% ============================================================
+\section{Introduction}
+% ============================================================
+
+\begin{frame}{Pourquoi les m\'ethodes d'ensemble~?}
+\begin{columns}[T]
+\begin{column}{0.55\textwidth}
+En classification, un seul mod\`ele capture rarement toute la structure des donn\'ees.
+Chaque algorithme poss\`ede ses propres \textbf{biais inductifs}~:
+
+\medskip
+\begin{itemize}
+  \item \textbf{Random Forest}~: d\'ecoupe l'espace par arbres al\'eatoires
+  \item \textbf{SVM}~: cherche un hyperplan de marge maximale
+  \item \textbf{R\'egression logistique}~: fronti\`ere lin\'eaire probabiliste
+  \item \textbf{KNN}~: vote par proximit\'e dans l'espace
+  \item \textbf{Na\"ive Bayes}~: hypoth\`ese d'ind\'ependance conditionnelle
+\end{itemize}
+\end{column}
+\begin{column}{0.42\textwidth}
+\begin{block}{Id\'ee fondatrice}
+Si ces mod\`eles se trompent sur des observations \textit{diff\'erentes}, on peut combiner leurs pr\'edictions pour r\'eduire l'erreur globale.
+\end{block}
+\medskip
+\begin{alertblock}{Question de recherche}
+Le stacking \`a 2 niveaux am\'eliore-t-il syst\'ematiquement les performances par rapport aux mod\`eles individuels~? Sous quelles conditions~?
+\end{alertblock}
+\end{column}
+\end{columns}
+\end{frame}
+
+% ============================================================
+\section{Fondements th\'eoriques}
+% ============================================================
+
+\begin{frame}{Le stacking~: principe g\'en\'eral}
+\begin{columns}[T]
+\begin{column}{0.50\textwidth}
+Le \textbf{stacking} (ou \textit{stacked generalization}), propos\'e par Wolpert (1992), repose sur un principe simple mais puissant~:
+
+\medskip
+\begin{enumerate}
+  \item Entra\^iner $M$ mod\`eles de base (niveau~0) sur les donn\'ees d'entra\^inement
+  \item Collecter leurs pr\'edictions comme \textbf{m\'eta-features}
+  \item Entra\^iner un \textbf{m\'eta-mod\`ele} (niveau~1) qui apprend la combinaison optimale
+\end{enumerate}
+
+\medskip
+Contrairement au \textit{voting} simple (moyenne), le m\'eta-mod\`ele apprend \`a pond\'erer adapt\'e aux forces de chaque mod\`ele.
+\end{column}
+\begin{column}{0.48\textwidth}
+\begin{block}{Formulation}
+Soit $h_1, h_2, \ldots, h_M$ les mod\`eles de base.\\
+Pour une observation $x$, on construit~:
+$$z = \big(h_1(x),\; h_2(x),\; \ldots,\; h_M(x)\big)$$
+Le m\'eta-mod\`ele $g$ pr\'edit~:
+$$\hat{y} = g(z) = g\big(h_1(x), \ldots, h_M(x)\big)$$
+\end{block}
+
+\begin{exampleblock}{Condition cl\'e}
+Le stacking fonctionne si les mod\`eles de base commettent des erreurs \textbf{non corr\'el\'ees} entre eux.
+\end{exampleblock}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}{OOF vs Blending~: deux strat\'egies}
+\begin{columns}[T]
+\begin{column}{0.48\textwidth}
+\begin{block}{Out-Of-Fold (OOF)}
+\begin{enumerate}
+  \item D\'ecouper le train en $K$ folds
+  \item Pour chaque fold~: entra\^iner sur $K{-}1$ folds, pr\'edire le fold restant
+  \item On obtient une pr\'ediction OOF pour \textbf{chaque} observation du train
+  \item Sur le test~: moyenner les $K$ pr\'edictions
+\end{enumerate}
+
+\smallskip
+\textcolor{stackgreen}{\textbf{Avantage}}~: utilise 100\% du train\\
+\textcolor{stackred}{\textbf{Risque}}~: plus complexe, fuite possible si mal impl\'ement\'e
+\end{block}
+\end{column}
+\begin{column}{0.48\textwidth}
+\begin{block}{Blending (holdout)}
+\begin{enumerate}
+  \item S\'eparer une portion du train (ex.~25\%) comme ensemble de validation
+  \item Entra\^iner les mod\`eles sur les 75\% restants
+  \item Pr\'edire sur le holdout $\to$ m\'eta-features
+  \item Le m\'eta-mod\`ele s'entra\^ine sur le holdout uniquement
+\end{enumerate}
+
+\smallskip
+\textcolor{stackgreen}{\textbf{Avantage}}~: simple \`a impl\'ementer\\
+\textcolor{stackred}{\textbf{Risque}}~: perte de 25\% des donn\'ees pour le m\'eta-mod\`ele
+\end{block}
+\end{column}
+\end{columns}
+
+\medskip
+\centering
+\small\textit{Dans notre \'etude, nous impl\'ementons les deux approches pour les comparer directement.}
+\end{frame}
+
+% ============================================================
+\section{Architecture propos\'ee}
+% ============================================================
+
+\begin{frame}{Architecture du Stacking \`a 2 niveaux}
+\begin{center}
+\includegraphics[width=0.82\textwidth]{diagrams/01_stacking_architecture.drawio.png}
+\end{center}
+\end{frame}
+
+% ============================================================
+\section{M\'ethodologie exp\'erimentale}
+% ============================================================
+
+\begin{frame}{Pipeline exp\'erimental complet}
+\begin{center}
+\includegraphics[width=0.48\textwidth]{diagrams/03_methodology_workflow.drawio.png}
+\end{center}
+\end{frame}
+
+\begin{frame}{Choix d'impl\'ementation}
+\begin{columns}[T]
+\begin{column}{0.48\textwidth}
+\begin{block}{Environnement}
+\begin{itemize}
+  \item Langage~: \textbf{R} (version 4.5.2)
+  \item IDE~: Jupyter Notebook avec noyau R
+  \item Packages principaux~: \texttt{caret}, \texttt{randomForest}, \texttt{e1071}, \texttt{glmnet}, \texttt{xgboost}, \texttt{pROC}
+\end{itemize}
+\end{block}
+
+\begin{block}{Pr\'eprocessing}
+\begin{itemize}
+  \item Imputation par m\'ediane
+  \item Encodage one-hot des cat\'egorielles
+  \item Suppression des features \`a variance quasi-nulle (\texttt{nearZeroVar})
+  \item Standardisation center + scale
+\end{itemize}
+\end{block}
+\end{column}
+\begin{column}{0.48\textwidth}
+\begin{block}{Protocole de validation}
+\begin{itemize}
+  \item Split train/test~: \textbf{80\%/20\%}, stratifi\'e
+  \item Validation crois\'ee interne~: \textbf{5-fold}
+  \item Graine al\'eatoire fix\'ee (\texttt{seed=42}) pour la reproductibilit\'e
+\end{itemize}
+\end{block}
+
+\begin{block}{M\'etriques d'\'evaluation}
+\begin{itemize}
+  \item \textbf{Accuracy}~: taux de bonne classification
+  \item \textbf{AUC}~: aire sous la courbe ROC
+  \item \textbf{Pr\'ecision}, \textbf{Rappel}, \textbf{F1-Score}
+  \item \textbf{Temps d'entra\^inement} (secondes)
+\end{itemize}
+\end{block}
+\end{column}
+\end{columns}
+\end{frame}
+
+% ============================================================
+\section{Pr\'esentation des datasets}
+% ============================================================
+
+\begin{frame}{Trois datasets, trois d\'efis}
+\begin{table}[h]
+\centering
+\small
+\begin{tabular}{l c c c}
+\toprule
+\textbf{Propri\'et\'e} & \textbf{Ames Housing} & \textbf{Pima Diabetes} & \textbf{Bank Marketing} \\
+\midrule
+\textbf{Source} & AmesHousing (R) & mlbench (R) & UCI Repository \\
+\textbf{Domaine} & Immobilier & M\'edical & Financier \\
+\textbf{Observations} & 2\,930 & 768 & 41\,188 \\
+\textbf{Features} & 40 (mixtes) & 8 (num.) & 52 (mixtes) \\
+\textbf{Cible} & Prix > m\'ediane & Diab\`ete pos/neg & Souscription oui/non \\
+\textbf{\'Equilibre} & 50/50 & 65/35 & 89/11 \\
+\textbf{Split train} & 2\,345 & 615 & 32\,951 \\
+\textbf{Split test} & 585 & 153 & 8\,237 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\medskip
+\begin{itemize}
+  \item \textbf{Ames}~: grand dataset \'equilibr\'e, features mixtes $\to$ cas favorable
+  \item \textbf{Pima}~: petit dataset, peu de features, classes d\'es\'equilibr\'ees $\to$ cas difficile
+  \item \textbf{Bank}~: tr\`es grand, fortement d\'es\'equilibr\'e (11\% positifs) $\to$ cas r\'eel
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Pourquoi ces 3 datasets~?}
+\begin{columns}[T]
+\begin{column}{0.32\textwidth}
+\begin{block}{\centering Ames Housing}
+\small
+\begin{itemize}
+  \item 40 features apr\`es encodage
+  \item Features immobili\`eres (qualit\'e, surface, ann\'ee, etc.)
+  \item Taille suffisante pour l'OOF
+  \item Baseline \'elev\'ee ($\approx$91\%)
+\end{itemize}
+\end{block}
+\end{column}
+\begin{column}{0.32\textwidth}
+\begin{block}{\centering Pima Diabetes}
+\small
+\begin{itemize}
+  \item Seulement 8 features m\'edicales
+  \item 768 observations
+  \item Donn\'ees bruit\'ees (z\'eros = NA)
+  \item Teste la robustesse du stacking avec peu de donn\'ees
+\end{itemize}
+\end{block}
+\end{column}
+\begin{column}{0.32\textwidth}
+\begin{block}{\centering Bank Marketing}
+\small
+\begin{itemize}
+  \item 52 features apr\`es encodage
+  \item D\'es\'equilibre s\'ev\`ere (89/11)
+  \item 41k observations
+  \item Haute dimensionnalit\'e $\to$ diversit\'e naturelle
+\end{itemize}
+\end{block}
+\end{column}
+\end{columns}
+
+\medskip
+\centering
+\small
+L'objectif est de tester le stacking dans des \textbf{conditions vari\'ees}~: taille du dataset, nombre de features, degr\'e de d\'es\'equilibre et domaine applicatif.
+\end{frame}
+
+% ============================================================
+\section{R\'esultats exp\'erimentaux}
+% ============================================================
+
+\begin{frame}{Dataset~1~: Ames Housing -- R\'esultats}
+\begin{columns}[T]
+\begin{column}{0.50\textwidth}
+\begin{table}[h]
+\centering
+\scriptsize
+\begin{tabular}{l c c c}
+\toprule
+\textbf{Mod\`ele} & \textbf{Acc.} & \textbf{AUC} & \textbf{F1} \\
+\midrule
+\rowcolor{stackred!15} \textbf{Stacking (XGB)} & \textbf{0.9453} & \textbf{0.9838} & \textbf{0.9461} \\
+RandomForest & 0.9436 & 0.9818 & 0.9436 \\
+Logistic & 0.9419 & 0.9809 & 0.9424 \\
+\rowcolor{stackorange!15} Blending (XGB) & 0.9368 & 0.9837 & 0.9384 \\
+\rowcolor{stackred!15} Stacking (Ridge) & 0.9350 & 0.9827 & 0.9349 \\
+\rowcolor{stackorange!15} Blending (Ridge) & 0.9350 & 0.9820 & 0.9349 \\
+SVM & 0.9248 & 0.9847 & 0.9247 \\
+KNN & 0.9145 & 0.9698 & 0.9144 \\
+Na\"ive Bayes & 0.9128 & 0.9743 & 0.9101 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\small
+\begin{itemize}
+  \item Stacking XGBoost en t\^ete~: \textbf{+0.17\,pp} vs RF
+  \item Gain modeste car corr\'elation tr\`es \'elev\'ee (0.944)
+  \item Tous les mod\`eles d\'epassent 91\% d'accuracy
+\end{itemize}
+\end{column}
+\begin{column}{0.48\textwidth}
+\includegraphics[width=\textwidth]{output/roc_curves_ames.png}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Dataset~1~: Ames Housing -- Visualisations}
+\begin{columns}[c]
+\begin{column}{0.48\textwidth}
+\includegraphics[width=\textwidth]{output/accuracy_comparison_ames.png}
+\end{column}
+\begin{column}{0.48\textwidth}
+\includegraphics[width=\textwidth]{output/corrplot_ames.png}
+\end{column}
+\end{columns}
+\smallskip
+\centering\small
+\textit{Gauche~: classement par accuracy. Droite~: matrice de corr\'elation des pr\'edictions OOF.}\\
+La corr\'elation moyenne est de \textbf{0.944}~: les mod\`eles produisent des pr\'edictions tr\`es similaires.
+\end{frame}
+
+
+\begin{frame}{Dataset~2~: Pima Diabetes -- R\'esultats}
+\begin{columns}[T]
+\begin{column}{0.50\textwidth}
+\begin{table}[h]
+\centering
+\scriptsize
+\begin{tabular}{l c c c}
+\toprule
+\textbf{Mod\`ele} & \textbf{Acc.} & \textbf{AUC} & \textbf{F1} \\
+\midrule
+Logistic & \textbf{0.7647} & \textbf{0.8070} & 0.6250 \\
+KNN & 0.7647 & 0.7855 & 0.6400 \\
+\rowcolor{stackorange!15} Blending (Ridge) & 0.7516 & 0.8011 & 0.6275 \\
+\rowcolor{stackorange!15} Blending (XGB) & 0.7516 & 0.8030 & \textbf{0.6607} \\
+Na\"ive Bayes & 0.7451 & 0.7828 & 0.6355 \\
+\rowcolor{stackred!15} Stacking (XGB) & 0.7320 & 0.7916 & 0.6019 \\
+RandomForest & 0.7255 & 0.7741 & 0.5882 \\
+\rowcolor{stackred!15} Stacking (Ridge) & 0.7255 & 0.7955 & 0.5800 \\
+SVM & 0.7190 & 0.7711 & 0.5567 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\small
+\begin{itemize}
+  \item Le stacking \textbf{d\'egrade} les performances~: \textcolor{stackred}{\textbf{$-$3.27\,pp}}
+  \item Le blending fait mieux (+0.33\,pp vs stacking)
+  \item Cause~: dataset trop petit (615 obs train) pour l'OOF
+\end{itemize}
+\end{column}
+\begin{column}{0.48\textwidth}
+\includegraphics[width=\textwidth]{output/roc_curves_pima.png}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Dataset~2~: Pima Diabetes -- Visualisations}
+\begin{columns}[c]
+\begin{column}{0.48\textwidth}
+\includegraphics[width=\textwidth]{output/accuracy_comparison_pima.png}
+\end{column}
+\begin{column}{0.48\textwidth}
+\includegraphics[width=\textwidth]{output/corrplot_pima.png}
+\end{column}
+\end{columns}
+\smallskip
+\centering\small
+Corr\'elation moyenne~: \textbf{0.877}. Avec seulement 8 features, les mod\`eles explorent le m\^eme espace et produisent des pr\'edictions semblables.
+Le m\'eta-mod\`ele n'a pas assez de signal compl\'ementaire pour am\'eliorer la classification.
+\end{frame}
+
+
+\begin{frame}{Dataset~3~: Bank Marketing -- R\'esultats}
+\begin{columns}[T]
+\begin{column}{0.50\textwidth}
+\begin{table}[h]
+\centering
+\scriptsize
+\begin{tabular}{l c c c}
+\toprule
+\textbf{Mod\`ele} & \textbf{Acc.} & \textbf{AUC} & \textbf{F1} \\
+\midrule
+\rowcolor{stackred!15} \textbf{Stacking (XGB)} & \textbf{0.9034} & \textbf{0.8141} & 0.3486 \\
+\rowcolor{stackorange!15} Blending (Ridge) & 0.9024 & 0.8094 & \textbf{0.3748} \\
+Logistic & 0.9021 & 0.8049 & 0.3623 \\
+SVM & 0.9012 & 0.7303 & 0.3361 \\
+RandomForest & 0.9011 & 0.8073 & 0.3783 \\
+\rowcolor{stackorange!15} Blending (XGB) & 0.9007 & 0.8104 & 0.3339 \\
+KNN & 0.8949 & 0.7946 & 0.1996 \\
+Na\"ive Bayes & 0.8873 & 0.7967 & -- \\
+\rowcolor{stackred!15} Stacking (Ridge) & 0.8873 & 0.8120 & -- \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\small
+\begin{itemize}
+  \item Stacking XGBoost~: meilleur AUC (\textbf{+0.92\,pp})
+  \item F1-Scores tr\`es faibles $\to$ d\'es\'equilibre 89/11
+  \item NB et Stacking Ridge n'arrivent pas \`a pr\'edire la classe minoritaire
+\end{itemize}
+\end{column}
+\begin{column}{0.48\textwidth}
+\includegraphics[width=\textwidth]{output/roc_curves_bank_marketing.png}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Dataset~3~: Bank Marketing -- Visualisations}
+\begin{columns}[c]
+\begin{column}{0.48\textwidth}
+\includegraphics[width=\textwidth]{output/accuracy_comparison_bank_marketing.png}
+\end{column}
+\begin{column}{0.48\textwidth}
+\includegraphics[width=\textwidth]{output/corrplot_bank_marketing.png}
+\end{column}
+\end{columns}
+\smallskip
+\centering\small
+Corr\'elation moyenne~: \textbf{0.528}. Na\"ive Bayes est tr\`es d\'ecorr\'el\'e des autres ($\approx$0.10). \\
+Cette diversit\'e permet au stacking d'exploiter des signaux compl\'ementaires, d'o\`u le gain en AUC malgr\'e le probl\`eme de d\'es\'equilibre.
+\end{frame}
+
+% ============================================================
+\section{Comparaison multi-datasets}
+% ============================================================
+
+\begin{frame}{Vue d'ensemble~: Stacking vs Individuels}
+\begin{center}
+\includegraphics[width=0.95\textwidth]{diagrams/02_results_comparison.drawio.png}
+\end{center}
+\end{frame}
+
+\begin{frame}{Gains du stacking par dataset}
+\begin{columns}[c]
+\begin{column}{0.55\textwidth}
+\includegraphics[width=\textwidth]{output/comparison_gains.png}
+\end{column}
+\begin{column}{0.42\textwidth}
+\small
+\begin{table}[h]
+\centering
+\scriptsize
+\begin{tabular}{l r r r}
+\toprule
+ & \textbf{Acc.} & \textbf{AUC} & \textbf{F1} \\
+\midrule
+\textbf{Ames} & \textcolor{stackgreen}{+0.17} & \textcolor{stackgreen}{+0.20} & \textcolor{stackgreen}{+0.25} \\
+\textbf{Pima} & \textcolor{stackred}{$-$3.27} & \textcolor{stackred}{$-$1.54} & \textcolor{stackred}{$-$2.31} \\
+\textbf{Bank} & \textcolor{stackgreen}{+0.13} & \textcolor{stackgreen}{+0.92} & \textcolor{stackred}{$-$1.37} \\
+\bottomrule
+\end{tabular}
+\caption*{\scriptsize Gains en points de pourcentage (pp)}
+\end{table}
+
+\medskip
+\begin{itemize}
+  \item[\textcolor{stackgreen}{$\blacktriangleright$}] Ames et Bank~: gain en Accuracy et AUC
+  \item[\textcolor{stackred}{$\blacktriangleright$}] Pima~: le stacking d\'egrade sur toutes les m\'etriques
+  \item Le F1 sur Bank est tir\'e vers le bas par le d\'es\'equilibre s\'ev\`ere
+\end{itemize}
+\end{column}
+\end{columns}
+\end{frame}
+
+% ============================================================
+\section{Analyse de la diversit\'e}
+% ============================================================
+
+\begin{frame}{Corr\'elation des pr\'edictions~: facteur d\'eterminant}
+\begin{center}
+\includegraphics[width=0.92\textwidth]{output/comparison_correlations.png}
+\end{center}
+\smallskip
+\centering\small
+\textbf{Ames}~: corr\'elation $\geq 0.92$ partout. \textbf{Pima}~: corr\'elation autour de 0.85--0.91. \textbf{Bank}~: Na\"ive Bayes quasi-ind\'ependant ($\approx$0.10), diversit\'e marqu\'ee.
+\end{frame}
+
+\begin{frame}{Corr\'elation $\leftrightarrow$ gain du stacking}
+\begin{center}
+\includegraphics[width=0.62\textwidth]{diagrams/05_correlation_vs_performance.drawio.png}
+\end{center}
+\medskip
+\centering\small
+Relation observ\'ee~: plus la corr\'elation entre mod\`eles de base est forte, moins le stacking apporte de gain. Les mod\`eles doivent \^etre \textbf{divers} pour que le m\'eta-mod\`ele ait de l'information compl\'ementaire \`a exploiter.
+\end{frame}
+
+\begin{frame}{Distribution des probabilit\'es OOF -- Ames Housing}
+\begin{center}
+\includegraphics[width=0.78\textwidth]{output/oof_distributions_ames.png}
+\end{center}
+\smallskip
+\centering\small
+Les distributions OOF montrent une bonne s\'eparation des classes pour la majorit\'e des mod\`eles. Les zones de chevauchement autour de 0.5 sont l\`a o\`u le m\'eta-mod\`ele peut apporter une correction.
+\end{frame}
+
+% ============================================================
+\section{Discussion}
+% ============================================================
+
+\begin{frame}{OOF vs Blending~: r\'esultats empiriques}
+\begin{columns}[T]
+\begin{column}{0.48\textwidth}
+\begin{table}[h]
+\centering
+\small
+\begin{tabular}{l r}
+\toprule
+\textbf{Dataset} & \textbf{OOF -- Blend (pp)} \\
+\midrule
+Ames Housing & \textcolor{stackgreen}{+0.85} \\
+Pima Diabetes & \textcolor{stackred}{$-$1.96} \\
+Bank Marketing & \textcolor{stackgreen}{+0.10} \\
+\midrule
+\textbf{Moyenne} & \textcolor{stackred}{$-$0.34} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\medskip
+\small
+L'OOF est g\'en\'eralement sup\'erieur sur les grands datasets car il exploite la totalit\'e des donn\'ees d'entra\^inement.
+\end{column}
+\begin{column}{0.48\textwidth}
+\begin{block}{Quand pr\'ef\'erer l'OOF~?}
+\begin{itemize}
+  \item Dataset de taille suffisante ($> 1\,000$ obs)
+  \item Quand chaque observation compte
+  \item Impl\'ementation rigoureuse (pas de fuite)
+\end{itemize}
+\end{block}
+
+\begin{block}{Quand pr\'ef\'erer le Blending~?}
+\begin{itemize}
+  \item Petit dataset o\`u l'OOF risque de sur-apprendre
+  \item Prototypage rapide
+  \item Quand la simplicit\'e prime
+\end{itemize}
+\end{block}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Co\^ut computationnel}
+\begin{columns}[T]
+\begin{column}{0.55\textwidth}
+\begin{table}[h]
+\centering
+\scriptsize
+\begin{tabular}{l r r r}
+\toprule
+\textbf{Mod\`ele} & \textbf{Ames} & \textbf{Pima} & \textbf{Bank} \\
+\midrule
+RandomForest & 18.1\,s & 1.4\,s & 450\,s \\
+SVM & 5.5\,s & 0.4\,s & 5\,275\,s \\
+Logistic & 0.4\,s & 0.1\,s & 6.2\,s \\
+KNN & 1.1\,s & 0.3\,s & 214\,s \\
+Na\"ive Bayes & 0.7\,s & 0.1\,s & 2.0\,s \\
+\midrule
+\textbf{Stacking (XGB)} & 27.6\,s & 3.6\,s & 5\,951\,s \\
+\textbf{Stacking (Ridge)} & 28.4\,s & 3.9\,s & 5\,973\,s \\
+\bottomrule
+\end{tabular}
+\end{table}
+\end{column}
+\begin{column}{0.42\textwidth}
+\small
+\begin{alertblock}{Constat}
+Le stacking cumule le temps de \textbf{tous les mod\`eles de base} (5 mod\`eles $\times$ 5 folds) plus le m\'eta-mod\`ele.
+\end{alertblock}
+
+\medskip
+Sur Bank Marketing, le SVM prend \`a lui seul \textbf{1h28} sur les 5 folds, ce qui porte le stacking \`a pr\`es de \textbf{1h40} au total.
+
+\medskip
+\textit{Pour un gain de +0.13\,pp en accuracy, la question du rapport co\^ut/b\'en\'efice se pose.}
+\end{column}
+\end{columns}
+\end{frame}
+
+% ============================================================
+\section{Conclusions et recommandations}
+% ============================================================
+
+\begin{frame}{Insights cl\'es}
+\begin{center}
+\includegraphics[width=0.82\textwidth]{diagrams/04_key_findings.drawio.png}
+\end{center}
+\end{frame}
+
+\begin{frame}{Synth\`ese et recommandations}
+\begin{columns}[T]
+\begin{column}{0.48\textwidth}
+\begin{block}{Ce que l'on retient}
+\begin{enumerate}
+  \item La \textbf{diversit\'e} des mod\`eles de base est le facteur n\textsuperscript{o}1 du succ\`es du stacking
+  \item Le stacking n'am\'eliore \textbf{pas syst\'ematiquement} les performances~: il faut v\'erifier les conditions
+  \item Sur Pima, un simple mod\`ele logistique bat l'ensemble du pipeline
+  \item L'OOF surpasse le blending sur les grands datasets, mais pas toujours sur les petits
+\end{enumerate}
+\end{block}
+\end{column}
+\begin{column}{0.48\textwidth}
+\begin{block}{Guide pratique}
+\small
+\textbf{Avant} de d\'eployer un stacking~:
+\begin{enumerate}
+  \item Calculer la corr\'elation entre pr\'edictions de base
+  \begin{itemize}
+    \item[$\to$] Si $> 0.9$~: gain n\'egligeable probable
+    \item[$\to$] Si $< 0.7$~: stacking potentiellement utile
+  \end{itemize}
+  \item V\'erifier la taille du dataset (id\'ealement $> 1\,000$ obs pour l'OOF)
+  \item Privil\'egier des algorithmes de natures diff\'erentes
+  \item \'Evaluer le co\^ut computationnel par rapport au gain esp\'er\'e
+\end{enumerate}
+\end{block}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Limites et perspectives}
+\begin{columns}[T]
+\begin{column}{0.48\textwidth}
+\begin{alertblock}{Limites de notre \'etude}
+\begin{itemize}
+  \item Nombre de datasets limit\'e \`a 3
+  \item Pas d'optimisation fine des hyperparam\`etres (grid search) pour les mod\`eles de base
+  \item Le d\'es\'equilibre de Bank Marketing n'a pas \'et\'e trait\'e (SMOTE, sous-\'echantillonnage)
+  \item Un seul split train/test (pas de r\'ep\'etitions multiples)
+\end{itemize}
+\end{alertblock}
+\end{column}
+\begin{column}{0.48\textwidth}
+\begin{exampleblock}{Pistes d'am\'elioration}
+\begin{itemize}
+  \item Ajouter des mod\`eles plus divers (r\'eseaux de neurones, LDA, gradient boosting simple)
+  \item Appliquer un resampling (SMOTE) avant stacking
+  \item Optimiser les hyperparam\`etres de chaque mod\`ele de base
+  \item Tester le stacking \`a 3 niveaux
+  \item \'Etendre \`a des probl\`emes multi-classes et de r\'egression
+\end{itemize}
+\end{exampleblock}
+\end{column}
+\end{columns}
+\end{frame}
+
+% ============================================================
+\section{Livrables}
+% ============================================================
+
+\begin{frame}{R\'ecapitulatif des livrables}
+\begin{columns}[T]
+\begin{column}{0.48\textwidth}
+\begin{block}{Code et donn\'ees}
+\begin{itemize}
+  \item Notebook R complet\\ (\texttt{stacking\_dual\_dataset.ipynb})
+  \item Pipeline g\'en\'erique r\'eutilisable (\texttt{run\_stacking\_pipeline})
+  \item 3 datasets pr\'epar\'es et pr\'etrait\'es
+\end{itemize}
+\end{block}
+
+\begin{block}{R\'esultats (CSV)}
+\begin{itemize}
+  \item Tables de r\'esultats par dataset
+  \item Matrices de corr\'elation
+  \item Accuracies par fold
+  \item Table comparative cross-dataset
+  \item Table de synth\`ese pour \LaTeX
+\end{itemize}
+\end{block}
+\end{column}
+\begin{column}{0.48\textwidth}
+\begin{block}{Visualisations (40+ fichiers PNG)}
+\begin{itemize}
+  \item Courbes ROC par dataset
+  \item Barplots d'accuracy
+  \item Heatmaps de corr\'elation
+  \item Distributions OOF
+  \item Compromis performance/temps
+  \item Comparaisons multi-datasets
+\end{itemize}
+\end{block}
+
+\begin{block}{Diagrammes (Draw.io)}
+\begin{itemize}
+  \item Architecture du stacking
+  \item Workflow m\'ethodologique
+  \item Comparaison des r\'esultats
+  \item Corr\'elation vs performance
+  \item Conclusions cl\'es
+\end{itemize}
+\end{block}
+\end{column}
+\end{columns}
+\end{frame}
+
+% ============================================================
+\section*{R\'ef\'erences}
+% ============================================================
+
+\begin{frame}{R\'ef\'erences}
+\small
+\begin{thebibliography}{9}
+
+\bibitem{wolpert1992}
+Wolpert, D.~H. (1992).
+\newblock Stacked Generalization.
+\newblock \textit{Neural Networks}, 5(2), 241--259.
+
+\bibitem{breiman1996}
+Breiman, L. (1996).
+\newblock Stacked Regressions.
+\newblock \textit{Machine Learning}, 24(1), 49--64.
+
+\bibitem{ting1999}
+Ting, K.~M. \& Witten, I.~H. (1999).
+\newblock Issues in Stacked Generalization.
+\newblock \textit{Journal of Artificial Intelligence Research}, 10, 271--289.
+
+\bibitem{vanderLaan2007}
+van der Laan, M.~J., Polley, E.~C. \& Hubbard, A.~E. (2007).
+\newblock Super Learner.
+\newblock \textit{Statistical Applications in Genetics and Molecular Biology}, 6(1).
+
+\bibitem{deAmes2011}
+De Cock, D. (2011).
+\newblock Ames, Iowa: Alternative to the Boston Housing Data.
+\newblock \textit{Journal of Statistics Education}, 19(3).
+
+\bibitem{smith1988}
+Smith, J.~W., Everhart, J.~E., Dickson, W.~C., Knowler, W.~C. \& Johannes, R.~S. (1988).
+\newblock Using the ADAP Learning Algorithm to Forecast the Onset of Diabetes Mellitus.
+\newblock \textit{Proc. Symposium on Computer Applications and Medical Care}, 261--265.
+
+\bibitem{moro2014}
+Moro, S., Cortez, P. \& Rita, P. (2014).
+\newblock A Data-Driven Approach to Predict the Success of Bank Telemarketing.
+\newblock \textit{Decision Support Systems}, 62, 22--31.
+
+\end{thebibliography}
+\end{frame}
+
+% ============================================================
+% FIN
+% ============================================================
+
+\begin{frame}[plain]
+\begin{center}
+\vfill
+{\Huge\bfseries Merci pour votre attention}
+
+\bigskip
+{\Large Questions~?}
+
+\vfill
+\small
+Mohamed Amine \textsc{Bellatreche} \& Soltan \textsc{Rezegia}\\
+USTO -- ING~4 Data Science\\
+Techniques Pr\'edictives -- Pr. \textsc{Bouziane} H.
+\vfill
+\end{center}
+\end{frame}
+
+\end{document}

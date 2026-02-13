@@ -1,0 +1,4 @@
+"Dataset","Best_Individual","Ind_Accuracy","Ind_AUC","Ind_F1","Best_Stacking","Stack_Accuracy","Stack_AUC","Stack_F1","Best_Blending","Blend_Accuracy","Blend_AUC","Blend_F1","Gain_Acc_pp","Gain_AUC_pp","Gain_F1_pp","OOF_vs_Blend_pp","Mean_Correlation"
+"Ames Housing","RandomForest",0.9436,0.9818,0.9436,"Stacking (XGBoost)",0.9453,0.9838,0.9461,"Blending (XGBoost)",0.9368,0.9837,0.9384,0.17,0.2,0.25,0.85,0.944
+"Pima Diabetes","Logistic",0.7647,0.807,0.625,"Stacking (XGBoost)",0.732,0.7916,0.6019,"Blending (Ridge)",0.7516,0.8011,0.6275,-3.27,-1.54,-2.31,-1.96,0.877
+"Bank Marketing","Logistic",0.9021,0.8049,0.3623,"Stacking (XGBoost)",0.9034,0.8141,0.3486,"Blending (Ridge)",0.9024,0.8094,0.3748,0.13,0.92,-1.37,0.1,0.528

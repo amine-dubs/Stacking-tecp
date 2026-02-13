@@ -1,0 +1,125 @@
+<mxfile host="app.diagrams.net" modified="2026-02-13T00:00:00.000Z" agent="Claude" version="24.0.0">
+  <diagram name="Stacking Architecture" id="stacking-arch">
+    <mxGraphModel dx="1434" dy="764" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1200" pageHeight="800" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- Title -->
+        <mxCell id="title" value="Stacking à 2 Niveaux: Architecture Complète" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=24;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="300" y="20" width="600" height="40" as="geometry" />
+        </mxCell>
+
+        <!-- Input Data -->
+        <mxCell id="input" value="Training Data&#xa;X_train, y_train" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=14;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="500" y="100" width="200" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- K-Fold Split -->
+        <mxCell id="kfold" value="K-Fold Cross-Validation&#xa;(K=5 folds)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12" vertex="1" parent="1">
+          <mxGeometry x="500" y="200" width="200" height="50" as="geometry" />
+        </mxCell>
+
+        <mxCell id="arrow1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeWidth=2" edge="1" parent="1" source="input" target="kfold">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- LEVEL 0: Base Models -->
+        <mxCell id="level0-box" value="NIVEAU 0: Modèles de Base" style="swimlane;whiteSpace=wrap;html=1;fontSize=16;fontStyle=1;fillColor=#f5f5f5;strokeColor=#666666" vertex="1" parent="1">
+          <mxGeometry x="50" y="290" width="1100" height="180" as="geometry" />
+        </mxCell>
+
+        <!-- Random Forest -->
+        <mxCell id="rf" value="Random Forest&#xa;ntree=500&#xa;mtry=sqrt(p)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11" vertex="1" parent="level0-box">
+          <mxGeometry x="30" y="50" width="180" height="100" as="geometry" />
+        </mxCell>
+
+        <!-- SVM -->
+        <mxCell id="svm" value="SVM&#xa;kernel=radial&#xa;cost=1, γ=1/p" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11" vertex="1" parent="level0-box">
+          <mxGeometry x="240" y="50" width="180" height="100" as="geometry" />
+        </mxCell>
+
+        <!-- Logistic -->
+        <mxCell id="logistic" value="Logistic Regression&#xa;family=binomial&#xa;link=logit" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11" vertex="1" parent="level0-box">
+          <mxGeometry x="450" y="50" width="180" height="100" as="geometry" />
+        </mxCell>
+
+        <!-- KNN -->
+        <mxCell id="knn" value="K-Nearest Neighbors&#xa;k=sqrt(n)&#xa;scaled features" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11" vertex="1" parent="level0-box">
+          <mxGeometry x="660" y="50" width="180" height="100" as="geometry" />
+        </mxCell>
+
+        <!-- Naive Bayes -->
+        <mxCell id="nb" value="Naive Bayes&#xa;kernel density&#xa;estimation" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11" vertex="1" parent="level0-box">
+          <mxGeometry x="870" y="50" width="180" height="100" as="geometry" />
+        </mxCell>
+
+        <!-- OOF Predictions -->
+        <mxCell id="oof" value="Out-Of-Fold (OOF) Predictions&#xa;Meta-Features Matrix [n × 5]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=13;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="400" y="520" width="400" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- Arrows from K-fold to Level 0 -->
+        <mxCell id="arrow2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;entryX=0.5;entryY=0;entryDx=0;entryDy=0" edge="1" parent="1" source="kfold" target="level0-box">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="600" y="270" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Arrows from Level 0 to OOF -->
+        <mxCell id="arrow3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;entryX=0.5;entryY=0;entryDx=0;entryDy=0" edge="1" parent="1" target="oof">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="600" y="470" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- LEVEL 1: Meta Models -->
+        <mxCell id="level1-box" value="NIVEAU 1: Méta-Modèles" style="swimlane;whiteSpace=wrap;html=1;fontSize=16;fontStyle=1;fillColor=#f5f5f5;strokeColor=#666666" vertex="1" parent="1">
+          <mxGeometry x="250" y="620" width="700" height="140" as="geometry" />
+        </mxCell>
+
+        <!-- Ridge -->
+        <mxCell id="ridge" value="Ridge Regression&#xa;α=0 (L2 penalty)&#xa;λ via CV" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=12;fontStyle=1" vertex="1" parent="level1-box">
+          <mxGeometry x="80" y="50" width="240" height="70" as="geometry" />
+        </mxCell>
+
+        <!-- XGBoost -->
+        <mxCell id="xgb" value="XGBoost&#xa;max_depth=2, η=0.1&#xa;early stopping" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=12;fontStyle=1" vertex="1" parent="level1-box">
+          <mxGeometry x="380" y="50" width="240" height="70" as="geometry" />
+        </mxCell>
+
+        <!-- Arrow from OOF to Level 1 -->
+        <mxCell id="arrow4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0" edge="1" parent="1" source="oof" target="level1-box">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Final Predictions -->
+        <mxCell id="final" value="Prédictions Finales&#xa;Stacking Ensemble" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=14;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="500" y="800" width="200" height="60" as="geometry" />
+        </mxCell>
+
+        <mxCell id="arrow5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0" edge="1" parent="1" source="level1-box" target="final">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Legend -->
+        <mxCell id="legend-title" value="Légende" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="50" y="520" width="100" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="legend1" value="Données" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10" vertex="1" parent="1">
+          <mxGeometry x="50" y="550" width="120" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="legend2" value="Niveau 0" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10" vertex="1" parent="1">
+          <mxGeometry x="50" y="580" width="120" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="legend3" value="Niveau 1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=10" vertex="1" parent="1">
+          <mxGeometry x="50" y="610" width="120" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="legend4" value="Sortie finale" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10" vertex="1" parent="1">
+          <mxGeometry x="50" y="640" width="120" height="25" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

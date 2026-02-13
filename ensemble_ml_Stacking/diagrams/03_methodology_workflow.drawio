@@ -1,0 +1,190 @@
+<mxfile host="app.diagrams.net" modified="2026-02-13T00:00:00.000Z" agent="Claude" version="24.0.0">
+  <diagram name="Methodology Workflow" id="methodology">
+    <mxGraphModel dx="1434" dy="1000" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1000" pageHeight="1400" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- Title -->
+        <mxCell id="title" value="Méthodologie Complète: Stacking à 2 Niveaux" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=24;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="200" y="20" width="600" height="40" as="geometry" />
+        </mxCell>
+
+        <!-- Phase 1: Data Loading -->
+        <mxCell id="phase1" value="PHASE 1: Chargement et Préparation" style="swimlane;whiteSpace=wrap;html=1;fontSize=14;fontStyle=1;fillColor=#dae8fc;strokeColor=#6c8ebf" vertex="1" parent="1">
+          <mxGeometry x="100" y="80" width="800" height="140" as="geometry" />
+        </mxCell>
+
+        <mxCell id="load1" value="Dataset 1&#xa;Ames Housing&#xa;(2930 × 40)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11" vertex="1" parent="phase1">
+          <mxGeometry x="30" y="40" width="140" height="80" as="geometry" />
+        </mxCell>
+
+        <mxCell id="load2" value="Dataset 2&#xa;Pima Diabetes&#xa;(768 × 8)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11" vertex="1" parent="phase1">
+          <mxGeometry x="210" y="40" width="140" height="80" as="geometry" />
+        </mxCell>
+
+        <mxCell id="load3" value="Dataset 3&#xa;Bank Marketing&#xa;(41188 × 52)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11" vertex="1" parent="phase1">
+          <mxGeometry x="390" y="40" width="140" height="80" as="geometry" />
+        </mxCell>
+
+        <mxCell id="preprocess" value="Preprocessing&#xa;• Imputation&#xa;• Encoding&#xa;• NZV removal" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=11" vertex="1" parent="phase1">
+          <mxGeometry x="570" y="40" width="180" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- Arrow to Phase 2 -->
+        <mxCell id="arrow-p1-p2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=3;fillColor=#dae8fc;strokeColor=#6c8ebf" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="500" y="220" as="sourcePoint" />
+            <mxPoint x="500" y="250" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Phase 2: Train-Test Split -->
+        <mxCell id="phase2" value="PHASE 2: Split Train/Test" style="swimlane;whiteSpace=wrap;html=1;fontSize=14;fontStyle=1;fillColor=#d5e8d4;strokeColor=#82b366" vertex="1" parent="1">
+          <mxGeometry x="100" y="250" width="800" height="100" as="geometry" />
+        </mxCell>
+
+        <mxCell id="split" value="Train/Test Split (80/20)&#xa;Stratified by target class&#xa;seed=42 for reproducibility" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;fontStyle=1" vertex="1" parent="phase2">
+          <mxGeometry x="200" y="40" width="400" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- Arrow to Phase 3 -->
+        <mxCell id="arrow-p2-p3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=3;fillColor=#d5e8d4;strokeColor=#82b366" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="500" y="350" as="sourcePoint" />
+            <mxPoint x="500" y="380" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Phase 3: Standardization -->
+        <mxCell id="phase3" value="PHASE 3: Standardisation" style="swimlane;whiteSpace=wrap;html=1;fontSize=14;fontStyle=1;fillColor=#fff2cc;strokeColor=#d6b656" vertex="1" parent="1">
+          <mxGeometry x="100" y="380" width="800" height="100" as="geometry" />
+        </mxCell>
+
+        <mxCell id="standardize" value="Standardization (center + scale)&#xa;Fit on train, apply to train + test&#xa;Prevents data leakage" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;fontStyle=1" vertex="1" parent="phase3">
+          <mxGeometry x="200" y="40" width="400" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- Arrow to Phase 4 -->
+        <mxCell id="arrow-p3-p4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=3;fillColor=#fff2cc;strokeColor=#d6b656" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="500" y="480" as="sourcePoint" />
+            <mxPoint x="500" y="510" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Phase 4: Level 0 Training (OOF) -->
+        <mxCell id="phase4" value="PHASE 4: NIVEAU 0 - Training avec OOF (K=5 folds)" style="swimlane;whiteSpace=wrap;html=1;fontSize=14;fontStyle=1;fillColor=#d5e8d4;strokeColor=#82b366" vertex="1" parent="1">
+          <mxGeometry x="100" y="510" width="800" height="250" as="geometry" />
+        </mxCell>
+
+        <mxCell id="oof-desc" value="Pour chaque modèle de base:" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;fontStyle=1" vertex="1" parent="phase4">
+          <mxGeometry x="30" y="40" width="200" height="20" as="geometry" />
+        </mxCell>
+
+        <mxCell id="oof-fold" value="1. 5-Fold CV" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=11" vertex="1" parent="phase4">
+          <mxGeometry x="40" y="70" width="140" height="40" as="geometry" />
+        </mxCell>
+
+        <mxCell id="oof-train" value="2. Train sur 4 folds" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=11" vertex="1" parent="phase4">
+          <mxGeometry x="220" y="70" width="140" height="40" as="geometry" />
+        </mxCell>
+
+        <mxCell id="oof-predict-val" value="3. Predict fold restant&#xa;(validation)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=11" vertex="1" parent="phase4">
+          <mxGeometry x="400" y="70" width="140" height="40" as="geometry" />
+        </mxCell>
+
+        <mxCell id="oof-predict-test" value="4. Predict test set&#xa;(moyenne K folds)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=11" vertex="1" parent="phase4">
+          <mxGeometry x="580" y="70" width="140" height="40" as="geometry" />
+        </mxCell>
+
+        <mxCell id="models-box" value="5 Modèles de Base" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=12;fontStyle=1;align=center;verticalAlign=top" vertex="1" parent="phase4">
+          <mxGeometry x="40" y="130" width="720" height="100" as="geometry" />
+        </mxCell>
+
+        <mxCell id="m1" value="RF" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10" vertex="1" parent="phase4">
+          <mxGeometry x="80" y="160" width="50" height="50" as="geometry" />
+        </mxCell>
+
+        <mxCell id="m2" value="SVM" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10" vertex="1" parent="phase4">
+          <mxGeometry x="200" y="160" width="50" height="50" as="geometry" />
+        </mxCell>
+
+        <mxCell id="m3" value="LR" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10" vertex="1" parent="phase4">
+          <mxGeometry x="320" y="160" width="50" height="50" as="geometry" />
+        </mxCell>
+
+        <mxCell id="m4" value="KNN" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10" vertex="1" parent="phase4">
+          <mxGeometry x="440" y="160" width="50" height="50" as="geometry" />
+        </mxCell>
+
+        <mxCell id="m5" value="NB" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10" vertex="1" parent="phase4">
+          <mxGeometry x="560" y="160" width="50" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- Arrow to Phase 5 -->
+        <mxCell id="arrow-p4-p5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=3;fillColor=#d5e8d4;strokeColor=#82b366" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="500" y="760" as="sourcePoint" />
+            <mxPoint x="500" y="790" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Phase 5: Level 1 Meta-Training -->
+        <mxCell id="phase5" value="PHASE 5: NIVEAU 1 - Meta-Modèles" style="swimlane;whiteSpace=wrap;html=1;fontSize=14;fontStyle=1;fillColor=#e1d5e7;strokeColor=#9673a6" vertex="1" parent="1">
+          <mxGeometry x="100" y="790" width="800" height="140" as="geometry" />
+        </mxCell>
+
+        <mxCell id="meta-input" value="Input: OOF Predictions&#xa;[n_train × 5]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=11" vertex="1" parent="phase5">
+          <mxGeometry x="40" y="50" width="150" height="60" as="geometry" />
+        </mxCell>
+
+        <mxCell id="meta1" value="Ridge Regression&#xa;with CV for λ" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=11;fontStyle=1" vertex="1" parent="phase5">
+          <mxGeometry x="250" y="50" width="180" height="60" as="geometry" />
+        </mxCell>
+
+        <mxCell id="meta2" value="XGBoost&#xa;early stopping" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=11;fontStyle=1" vertex="1" parent="phase5">
+          <mxGeometry x="490" y="50" width="180" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- Arrow to Phase 6 -->
+        <mxCell id="arrow-p5-p6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=3;fillColor=#e1d5e7;strokeColor=#9673a6" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="500" y="930" as="sourcePoint" />
+            <mxPoint x="500" y="960" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Phase 6: Evaluation -->
+        <mxCell id="phase6" value="PHASE 6: Évaluation et Comparaison" style="swimlane;whiteSpace=wrap;html=1;fontSize=14;fontStyle=1;fillColor=#f8cecc;strokeColor=#b85450" vertex="1" parent="1">
+          <mxGeometry x="100" y="960" width="800" height="180" as="geometry" />
+        </mxCell>
+
+        <mxCell id="eval1" value="Métriques&#xa;• Accuracy&#xa;• AUC&#xa;• Precision/Recall&#xa;• F1-Score" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11" vertex="1" parent="phase6">
+          <mxGeometry x="50" y="50" width="180" height="100" as="geometry" />
+        </mxCell>
+
+        <mxCell id="eval2" value="Comparaison&#xa;• Individual models&#xa;• Stacking (Ridge)&#xa;• Stacking (XGB)&#xa;• Blending" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11" vertex="1" parent="phase6">
+          <mxGeometry x="280" y="50" width="180" height="100" as="geometry" />
+        </mxCell>
+
+        <mxCell id="eval3" value="Analyses&#xa;• Correlation matrix&#xa;• Training times&#xa;• ROC curves&#xa;• Gains analysis" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11" vertex="1" parent="phase6">
+          <mxGeometry x="510" y="50" width="180" height="100" as="geometry" />
+        </mxCell>
+
+        <!-- Final Output -->
+        <mxCell id="output" value="✓ Résultats sauvegardés (CSV + visualisations PNG)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=13;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="250" y="1170" width="500" height="50" as="geometry" />
+        </mxCell>
+
+        <mxCell id="arrow-final" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=3;fillColor=#f8cecc;strokeColor=#b85450" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="500" y="1140" as="sourcePoint" />
+            <mxPoint x="500" y="1170" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

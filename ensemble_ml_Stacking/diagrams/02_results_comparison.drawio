@@ -1,0 +1,105 @@
+<mxfile host="app.diagrams.net" modified="2026-02-13T00:00:00.000Z" agent="Claude" version="24.0.0">
+  <diagram name="Results Comparison" id="results-comp">
+    <mxGraphModel dx="1434" dy="950" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1400" pageHeight="900" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- Title -->
+        <mxCell id="title" value="Comparaison Multi-Datasets: Stacking vs Modèles Individuels" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=26;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="200" y="20" width="1000" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- Dataset 1: Ames Housing -->
+        <mxCell id="dataset1-box" value="" style="swimlane;whiteSpace=wrap;html=1;fontSize=18;fontStyle=1;fillColor=#dae8fc;strokeColor=#6c8ebf;startSize=50" vertex="1" parent="1">
+          <mxGeometry x="80" y="120" width="380" height="700" as="geometry" />
+        </mxCell>
+        <mxCell id="d1-title" value="Dataset 1: Ames Housing" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=18;fontStyle=1" vertex="1" parent="dataset1-box">
+          <mxGeometry x="20" y="10" width="340" height="30" as="geometry" />
+        </mxCell>
+
+        <mxCell id="d1-info" value="📊 Données&#xa;• Observations: 2,930&#xa;• Features: 40&#xa;• Domaine: Immobilier&#xa;• Classes: High/Low price" style="rounded=1;whiteSpace=wrap;html=1;align=left;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;spacingLeft=10" vertex="1" parent="dataset1-box">
+          <mxGeometry x="20" y="60" width="340" height="100" as="geometry" />
+        </mxCell>
+
+        <mxCell id="d1-best-ind" value="🥇 Meilleur Individuel&#xa;&#xa;RandomForest&#xa;Accuracy: 94.36%&#xa;AUC: 0.9818&#xa;F1-Score: 0.9436" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=13;fontStyle=1" vertex="1" parent="dataset1-box">
+          <mxGeometry x="20" y="180" width="340" height="120" as="geometry" />
+        </mxCell>
+
+        <mxCell id="d1-best-stack" value="🏆 Meilleur Stacking&#xa;&#xa;Stacking (XGBoost)&#xa;Accuracy: 94.53%&#xa;AUC: 0.9838&#xa;F1-Score: 0.9461" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=13;fontStyle=1" vertex="1" parent="dataset1-box">
+          <mxGeometry x="20" y="320" width="340" height="120" as="geometry" />
+        </mxCell>
+
+        <mxCell id="d1-gains" value="📈 Gains du Stacking&#xa;&#xa;Accuracy: +0.17 pp&#xa;AUC: +0.20 pp&#xa;F1-Score: +0.25 pp" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=13;fontStyle=1" vertex="1" parent="dataset1-box">
+          <mxGeometry x="20" y="460" width="340" height="100" as="geometry" />
+        </mxCell>
+
+        <mxCell id="d1-corr" value="🔗 Corrélation Moyenne: 0.944&#xa;(HAUTE - modèles similaires)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=12;fontStyle=1" vertex="1" parent="dataset1-box">
+          <mxGeometry x="20" y="580" width="340" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- Dataset 2: Pima Diabetes -->
+        <mxCell id="dataset2-box" value="" style="swimlane;whiteSpace=wrap;html=1;fontSize=18;fontStyle=1;fillColor=#dae8fc;strokeColor=#6c8ebf;startSize=50" vertex="1" parent="1">
+          <mxGeometry x="510" y="120" width="380" height="700" as="geometry" />
+        </mxCell>
+        <mxCell id="d2-title" value="Dataset 2: Pima Diabetes" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=18;fontStyle=1" vertex="1" parent="dataset2-box">
+          <mxGeometry x="20" y="10" width="340" height="30" as="geometry" />
+        </mxCell>
+
+        <mxCell id="d2-info" value="📊 Données&#xa;• Observations: 768&#xa;• Features: 8&#xa;• Domaine: Médical&#xa;• Classes: pos/neg diabetes" style="rounded=1;whiteSpace=wrap;html=1;align=left;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;spacingLeft=10" vertex="1" parent="dataset2-box">
+          <mxGeometry x="20" y="60" width="340" height="100" as="geometry" />
+        </mxCell>
+
+        <mxCell id="d2-best-ind" value="🥇 Meilleur Individuel&#xa;&#xa;Logistic Regression&#xa;Accuracy: 76.47%&#xa;AUC: 0.8070&#xa;F1-Score: 0.6250" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=13;fontStyle=1" vertex="1" parent="dataset2-box">
+          <mxGeometry x="20" y="180" width="340" height="120" as="geometry" />
+        </mxCell>
+
+        <mxCell id="d2-best-stack" value="🏆 Meilleur Stacking&#xa;&#xa;Stacking (XGBoost)&#xa;Accuracy: 73.20%&#xa;AUC: 0.7916&#xa;F1-Score: 0.6019" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=13;fontStyle=1" vertex="1" parent="dataset2-box">
+          <mxGeometry x="20" y="320" width="340" height="120" as="geometry" />
+        </mxCell>
+
+        <mxCell id="d2-gains" value="📉 Gains du Stacking&#xa;&#xa;Accuracy: -3.27 pp ⚠️&#xa;AUC: -1.54 pp&#xa;F1-Score: -2.31 pp" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=13;fontStyle=1" vertex="1" parent="dataset2-box">
+          <mxGeometry x="20" y="460" width="340" height="100" as="geometry" />
+        </mxCell>
+
+        <mxCell id="d2-corr" value="🔗 Corrélation Moyenne: 0.877&#xa;(HAUTE + dataset petit)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=12;fontStyle=1" vertex="1" parent="dataset2-box">
+          <mxGeometry x="20" y="580" width="340" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- Dataset 3: Bank Marketing -->
+        <mxCell id="dataset3-box" value="" style="swimlane;whiteSpace=wrap;html=1;fontSize=18;fontStyle=1;fillColor=#dae8fc;strokeColor=#6c8ebf;startSize=50" vertex="1" parent="1">
+          <mxGeometry x="940" y="120" width="380" height="700" as="geometry" />
+        </mxCell>
+        <mxCell id="d3-title" value="Dataset 3: Bank Marketing" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=18;fontStyle=1" vertex="1" parent="dataset3-box">
+          <mxGeometry x="20" y="10" width="340" height="30" as="geometry" />
+        </mxCell>
+
+        <mxCell id="d3-info" value="📊 Données&#xa;• Observations: 41,188&#xa;• Features: 52&#xa;• Domaine: Financial/Commercial&#xa;• Classes: yes/no subscription" style="rounded=1;whiteSpace=wrap;html=1;align=left;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;spacingLeft=10" vertex="1" parent="dataset3-box">
+          <mxGeometry x="20" y="60" width="340" height="100" as="geometry" />
+        </mxCell>
+
+        <mxCell id="d3-best-ind" value="🥇 Meilleur Individuel&#xa;&#xa;Logistic Regression&#xa;Accuracy: 90.21%&#xa;AUC: 0.8049&#xa;F1-Score: 0.3623" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=13;fontStyle=1" vertex="1" parent="dataset3-box">
+          <mxGeometry x="20" y="180" width="340" height="120" as="geometry" />
+        </mxCell>
+
+        <mxCell id="d3-best-stack" value="🏆 Meilleur Stacking&#xa;&#xa;Stacking (XGBoost)&#xa;Accuracy: 90.34%&#xa;AUC: 0.8141&#xa;F1-Score: 0.3486" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=13;fontStyle=1" vertex="1" parent="dataset3-box">
+          <mxGeometry x="20" y="320" width="340" height="120" as="geometry" />
+        </mxCell>
+
+        <mxCell id="d3-gains" value="📈 Gains du Stacking&#xa;&#xa;Accuracy: +0.13 pp&#xa;AUC: +0.92 pp ✓&#xa;F1-Score: -1.37 pp" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=13;fontStyle=1" vertex="1" parent="dataset3-box">
+          <mxGeometry x="20" y="460" width="340" height="100" as="geometry" />
+        </mxCell>
+
+        <mxCell id="d3-corr" value="🔗 Corrélation Moyenne: 0.528&#xa;(FAIBLE - bonne diversité) ✓" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=12;fontStyle=1" vertex="1" parent="dataset3-box">
+          <mxGeometry x="20" y="580" width="340" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- Bottom Summary -->
+        <mxCell id="summary" value="Conclusion: Le stacking performe mieux quand (1) corrélation est faible, (2) dataset suffisamment grand, (3) features haute dimension" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=14;fontStyle=1;align=center" vertex="1" parent="1">
+          <mxGeometry x="80" y="840" width="1240" height="40" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

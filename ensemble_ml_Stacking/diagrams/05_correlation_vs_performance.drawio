@@ -1,0 +1,159 @@
+<mxfile host="app.diagrams.net" modified="2026-02-13T00:00:00.000Z" agent="Claude" version="24.0.0">
+  <diagram name="Correlation vs Performance" id="corr-perf">
+    <mxGraphModel dx="1434" dy="950" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- Title -->
+        <mxCell id="title" value="Relation: Corrélation des Modèles ↔ Gain du Stacking" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=24;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="200" y="20" width="700" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- Chart Area -->
+        <mxCell id="chart-box" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;strokeWidth=2" vertex="1" parent="1">
+          <mxGeometry x="100" y="120" width="900" height="600" as="geometry" />
+        </mxCell>
+
+        <!-- Y-axis -->
+        <mxCell id="yaxis" value="" style="endArrow=classic;html=1;strokeColor=#000000;strokeWidth=3" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="150" y="670" as="sourcePoint" />
+            <mxPoint x="150" y="170" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="yaxis-label" value="Gain Accuracy (pp)" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;fontStyle=1;rotation=-90" vertex="1" parent="1">
+          <mxGeometry x="30" y="380" width="80" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- X-axis -->
+        <mxCell id="xaxis" value="" style="endArrow=classic;html=1;strokeColor=#000000;strokeWidth=3" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="150" y="670" as="sourcePoint" />
+            <mxPoint x="950" y="670" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="xaxis-label" value="Corrélation Moyenne Prédictions Niveau 0" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="450" y="690" width="300" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- Grid lines and labels -->
+        <!-- Y-axis ticks -->
+        <mxCell id="y-tick-4" value="+4" style="text;html=1;strokeColor=none;fillColor=none;align=right;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12" vertex="1" parent="1">
+          <mxGeometry x="90" y="220" width="50" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="y-line-4" value="" style="line;strokeWidth=1;html=1;strokeColor=#cccccc;dashed=1" vertex="1" parent="1">
+          <mxGeometry x="150" y="230" width="800" height="10" as="geometry" />
+        </mxCell>
+
+        <mxCell id="y-tick-2" value="+2" style="text;html=1;strokeColor=none;fillColor=none;align=right;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12" vertex="1" parent="1">
+          <mxGeometry x="90" y="330" width="50" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="y-line-2" value="" style="line;strokeWidth=1;html=1;strokeColor=#cccccc;dashed=1" vertex="1" parent="1">
+          <mxGeometry x="150" y="340" width="800" height="10" as="geometry" />
+        </mxCell>
+
+        <mxCell id="y-tick-0" value="0" style="text;html=1;strokeColor=none;fillColor=none;align=right;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="90" y="440" width="50" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="y-line-0" value="" style="line;strokeWidth=2;html=1;strokeColor=#000000" vertex="1" parent="1">
+          <mxGeometry x="150" y="450" width="800" height="10" as="geometry" />
+        </mxCell>
+
+        <mxCell id="y-tick--2" value="-2" style="text;html=1;strokeColor=none;fillColor=none;align=right;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12" vertex="1" parent="1">
+          <mxGeometry x="90" y="550" width="50" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="y-line--2" value="" style="line;strokeWidth=1;html=1;strokeColor=#cccccc;dashed=1" vertex="1" parent="1">
+          <mxGeometry x="150" y="560" width="800" height="10" as="geometry" />
+        </mxCell>
+
+        <mxCell id="y-tick--4" value="-4" style="text;html=1;strokeColor=none;fillColor=none;align=right;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12" vertex="1" parent="1">
+          <mxGeometry x="90" y="660" width="50" height="20" as="geometry" />
+        </mxCell>
+
+        <!-- X-axis ticks -->
+        <mxCell id="x-tick-05" value="0.5" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=12" vertex="1" parent="1">
+          <mxGeometry x="300" y="675" width="40" height="20" as="geometry" />
+        </mxCell>
+
+        <mxCell id="x-tick-06" value="0.6" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=12" vertex="1" parent="1">
+          <mxGeometry x="410" y="675" width="40" height="20" as="geometry" />
+        </mxCell>
+
+        <mxCell id="x-tick-07" value="0.7" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=12" vertex="1" parent="1">
+          <mxGeometry x="520" y="675" width="40" height="20" as="geometry" />
+        </mxCell>
+
+        <mxCell id="x-tick-08" value="0.8" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=12" vertex="1" parent="1">
+          <mxGeometry x="630" y="675" width="40" height="20" as="geometry" />
+        </mxCell>
+
+        <mxCell id="x-tick-09" value="0.9" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=12" vertex="1" parent="1">
+          <mxGeometry x="740" y="675" width="40" height="20" as="geometry" />
+        </mxCell>
+
+        <mxCell id="x-tick-10" value="1.0" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=12" vertex="1" parent="1">
+          <mxGeometry x="850" y="675" width="40" height="20" as="geometry" />
+        </mxCell>
+
+        <!-- Trend line (negative correlation) -->
+        <mxCell id="trend" value="" style="endArrow=none;html=1;strokeColor=#e74c3c;strokeWidth=3;dashed=1" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="200" y="250" as="sourcePoint" />
+            <mxPoint x="900" y="620" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="trend-label" value="Tendance: plus la corrélation ↑, moins le gain ↓" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=13;fontStyle=1;fontColor=#e74c3c" vertex="1" parent="1">
+          <mxGeometry x="550" y="300" width="350" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- Data Points -->
+        <!-- Bank Marketing (0.528, +0.13) -->
+        <mxCell id="point-bank" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#2ecc71;strokeColor=#27ae60;strokeWidth=3" vertex="1" parent="1">
+          <mxGeometry x="265" y="428" width="44" height="44" as="geometry" />
+        </mxCell>
+        <mxCell id="label-bank" value="Bank Marketing&#xa;(corr=0.528)&#xa;Gain: +0.13pp" style="text;html=1;strokeColor=none;fillColor=#d5e8d4;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=11;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="200" y="480" width="120" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- Pima Diabetes (0.877, -3.27) -->
+        <mxCell id="point-pima" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#e74c3c;strokeColor=#c0392b;strokeWidth=3" vertex="1" parent="1">
+          <mxGeometry x="720" y="598" width="44" height="44" as="geometry" />
+        </mxCell>
+        <mxCell id="label-pima" value="Pima Diabetes&#xa;(corr=0.877)&#xa;Gain: -3.27pp" style="text;html=1;strokeColor=none;fillColor=#f8cecc;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=11;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="682" y="560" width="120" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- Ames Housing (0.944, +0.17) -->
+        <mxCell id="point-ames" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#f39c12;strokeColor=#d68910;strokeWidth=3" vertex="1" parent="1">
+          <mxGeometry x="848" y="441" width="44" height="44" as="geometry" />
+        </mxCell>
+        <mxCell id="label-ames" value="Ames Housing&#xa;(corr=0.944)&#xa;Gain: +0.17pp" style="text;html=1;strokeColor=none;fillColor=#fff2cc;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=11;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="810" y="370" width="120" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- Zones -->
+        <mxCell id="zone-good" value="ZONE FAVORABLE&#xa;Faible corrélation&#xa;Gain positif attendu" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;fontStyle=1;opacity=30" vertex="1" parent="1">
+          <mxGeometry x="150" y="200" width="250" height="250" as="geometry" />
+        </mxCell>
+
+        <mxCell id="zone-risky" value="ZONE À RISQUE&#xa;Haute corrélation&#xa;Gain faible ou négatif" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=12;fontStyle=1;opacity=30" vertex="1" parent="1">
+          <mxGeometry x="700" y="420" width="250" height="250" as="geometry" />
+        </mxCell>
+
+        <!-- Legend -->
+        <mxCell id="legend-box" value="Légende" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#666666;fontSize=14;fontStyle=1;align=left;verticalAlign=top" vertex="1" parent="1">
+          <mxGeometry x="100" y="740" width="900" height="80" as="geometry" />
+        </mxCell>
+
+        <mxCell id="legend-content" value="🟢 Vert: Gain positif avec faible corrélation (idéal)     🟠 Orange: Gain positif malgré haute corrélation (cas limite)     🔴 Rouge: Gain négatif avec haute corrélation (échec)&#xa;&#xa;📊 Constat: Une corrélation élevée entre modèles de base réduit drastiquement l'efficacité du stacking. Viser une diversité maximale." style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=12;spacingLeft=10" vertex="1" parent="1">
+          <mxGeometry x="120" y="765" width="860" height="50" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

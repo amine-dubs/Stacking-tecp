@@ -1,0 +1,220 @@
+<mxfile host="app.diagrams.net" modified="2026-02-13T00:00:00.000Z" agent="draw.io" version="22.0.0">
+  <diagram name="Stacking Architecture" id="stacking-arch">
+    <mxGraphModel dx="1622" dy="962" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1800" pageHeight="1200" math="0" shadow="1">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <!-- Title -->
+        <mxCell id="title" value="&lt;font style=&quot;font-size:22px;&quot;&gt;&lt;b&gt;Architecture Stacking 2 Niveaux&lt;/b&gt;&lt;/font&gt;&lt;br&gt;&lt;font style=&quot;font-size:12px; color:#666;&quot;&gt;Analyse Comparative Multi-Datasets : Ames Housing &amp;amp; Pima Diabetes &amp;amp; Bank Marketing&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="350" y="10" width="600" height="60" as="geometry"/>
+        </mxCell>
+
+        <!-- ===== THREE INPUT DATASETS ===== -->
+        <mxCell id="data_ames" value="&lt;b&gt;Dataset 1 : Ames Housing&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px;&quot;&gt;2930 obs x 82 features (mixtes)&lt;br&gt;Cible: Prix &amp;gt; mediane (High/Low)&lt;br&gt;Domaine: Immobilier&lt;br&gt;Corr. moy.: ~0.94 (haute)&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;shadow=1;fontSize=12;arcSize=20;" vertex="1" parent="1">
+          <mxGeometry x="120" y="80" width="260" height="90" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="data_pima" value="&lt;b&gt;Dataset 2 : Pima Diabetes&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px;&quot;&gt;768 obs x 8 features (numeriques)&lt;br&gt;Cible: Diabete (pos/neg)&lt;br&gt;Domaine: Medical&lt;br&gt;Corr. moy.: ~0.88 (moy-haute)&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;shadow=1;fontSize=12;arcSize=20;" vertex="1" parent="1">
+          <mxGeometry x="520" y="80" width="260" height="90" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="data_iono" value="&lt;b&gt;Dataset 3 : Bank Marketing&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px;&quot;&gt;41188 obs x 20 features (mixtes)&lt;br&gt;Cible: Subscription (yes/no)&lt;br&gt;Domaine: Finance / Marketing&lt;br&gt;Corr. moy.: moyenne&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;shadow=1;fontSize=12;arcSize=20;" vertex="1" parent="1">
+          <mxGeometry x="920" y="80" width="260" height="90" as="geometry"/>
+        </mxCell>
+
+        <!-- Preprocessing -->
+        <mxCell id="preprocess" value="&lt;b&gt;Preprocessing&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px;&quot;&gt;Imputation NA | One-Hot Encoding | Normalisation&lt;br&gt;Feature Selection | Split 80/20 stratifie&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;shadow=1;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="430" y="210" width="440" height="55" as="geometry"/>
+        </mxCell>
+
+        <!-- Arrows data -> preprocess -->
+        <mxCell id="arrow1a" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeWidth=2;strokeColor=#6c8ebf;" edge="1" source="data_ames" target="preprocess" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="arrow1b" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeWidth=2;strokeColor=#6c8ebf;" edge="1" source="data_pima" target="preprocess" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="arrow1c" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeWidth=2;strokeColor=#6c8ebf;" edge="1" source="data_iono" target="preprocess" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- Train/Test Split -->
+        <mxCell id="split" value="&lt;b&gt;Split Train / Test&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px;&quot;&gt;80% Train -- 20% Test (stratifie)&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;shadow=1;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="510" y="295" width="280" height="45" as="geometry"/>
+        </mxCell>
+
+        <!-- Arrow preprocess -> split -->
+        <mxCell id="arrow2" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeWidth=2;strokeColor=#666;" edge="1" source="preprocess" target="split" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- ===== NIVEAU 0 HEADER ===== -->
+        <mxCell id="n0_header" value="&lt;font style=&quot;font-size:14px;&quot;&gt;&lt;b&gt;NIVEAU 0 -- Modeles de Base (5 modeles diversifies)&lt;/b&gt;&lt;/font&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px; color:#555;&quot;&gt;Validation Croisee 5-Fold Out-of-Fold (OOF)&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="390" y="360" width="520" height="45" as="geometry"/>
+        </mxCell>
+
+        <!-- Level 0 background box -->
+        <mxCell id="n0_box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F5E9;strokeColor=#4CAF50;strokeWidth=2;dashed=1;opacity=30;" vertex="1" parent="1">
+          <mxGeometry x="110" y="410" width="1080" height="120" as="geometry"/>
+        </mxCell>
+
+        <!-- Random Forest -->
+        <mxCell id="rf" value="&lt;b&gt;Random Forest&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px;&quot;&gt;500 arbres, bagging&lt;br&gt;Non-lineaire, faible variance&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c8e6c9;strokeColor=#388e3c;shadow=1;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="120" y="420" width="180" height="65" as="geometry"/>
+        </mxCell>
+
+        <!-- SVM -->
+        <mxCell id="svm" value="&lt;b&gt;SVM (Radial)&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px;&quot;&gt;Noyau RBF&lt;br&gt;Frontieres complexes&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c8e6c9;strokeColor=#388e3c;shadow=1;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="320" y="420" width="180" height="65" as="geometry"/>
+        </mxCell>
+
+        <!-- Logistic Regression -->
+        <mxCell id="lr" value="&lt;b&gt;Reg. Logistique&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px;&quot;&gt;Modele lineaire&lt;br&gt;Diversite vs non-lineaires&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c8e6c9;strokeColor=#388e3c;shadow=1;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="520" y="420" width="180" height="65" as="geometry"/>
+        </mxCell>
+
+        <!-- KNN -->
+        <mxCell id="knn" value="&lt;b&gt;KNN&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px;&quot;&gt;k plus proches voisins&lt;br&gt;Instance-based learning&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c8e6c9;strokeColor=#388e3c;shadow=1;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="720" y="420" width="180" height="65" as="geometry"/>
+        </mxCell>
+
+        <!-- Naive Bayes -->
+        <mxCell id="nb" value="&lt;b&gt;Naive Bayes&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px;&quot;&gt;Independance cond.&lt;br&gt;Perspective unique&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c8e6c9;strokeColor=#388e3c;shadow=1;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="920" y="420" width="180" height="65" as="geometry"/>
+        </mxCell>
+
+        <!-- Arrows from split to each model -->
+        <mxCell id="a_rf" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeWidth=1.5;strokeColor=#388e3c;" edge="1" source="split" target="rf" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="a_svm" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeWidth=1.5;strokeColor=#388e3c;" edge="1" source="split" target="svm" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="a_lr" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeWidth=1.5;strokeColor=#388e3c;" edge="1" source="split" target="lr" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="a_knn" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeWidth=1.5;strokeColor=#388e3c;" edge="1" source="split" target="knn" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="a_nb" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeWidth=1.5;strokeColor=#388e3c;" edge="1" source="split" target="nb" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- OOF Predictions -->
+        <mxCell id="oof" value="&lt;b&gt;Predictions Out-of-Fold (OOF)&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px;&quot;&gt;Matrice de meta-features (N x 5)&lt;br&gt;Chaque colonne = predictions d'un modele de base&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff9c4;strokeColor=#f9a825;shadow=1;fontSize=11;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="420" y="560" width="460" height="60" as="geometry"/>
+        </mxCell>
+
+        <!-- Arrows from models to OOF -->
+        <mxCell id="b_rf" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeWidth=1.5;strokeColor=#f9a825;" edge="1" source="rf" target="oof" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="b_svm" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeWidth=1.5;strokeColor=#f9a825;" edge="1" source="svm" target="oof" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="b_lr" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeWidth=1.5;strokeColor=#f9a825;" edge="1" source="lr" target="oof" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="b_knn" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeWidth=1.5;strokeColor=#f9a825;" edge="1" source="knn" target="oof" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="b_nb" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeWidth=1.5;strokeColor=#f9a825;" edge="1" source="nb" target="oof" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- ===== NIVEAU 1 HEADER ===== -->
+        <mxCell id="n1_header" value="&lt;font style=&quot;font-size:14px;&quot;&gt;&lt;b&gt;NIVEAU 1 -- Meta-Modeles&lt;/b&gt;&lt;/font&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px; color:#555;&quot;&gt;Apprend a combiner optimalement les predictions de base&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="400" y="635" width="500" height="45" as="geometry"/>
+        </mxCell>
+
+        <!-- Level 1 background box -->
+        <mxCell id="n1_box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E3F2FD;strokeColor=#1976D2;strokeWidth=2;dashed=1;opacity=30;" vertex="1" parent="1">
+          <mxGeometry x="300" y="685" width="700" height="100" as="geometry"/>
+        </mxCell>
+
+        <!-- Ridge -->
+        <mxCell id="ridge" value="&lt;b&gt;Ridge Regression&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px;&quot;&gt;Regularisation L2&lt;br&gt;Combinaison lineaire ponderee&lt;br&gt;Empeche sur-apprentissage&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#bbdefb;strokeColor=#1976d2;shadow=1;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="330" y="695" width="220" height="80" as="geometry"/>
+        </mxCell>
+
+        <!-- XGBoost -->
+        <mxCell id="xgb" value="&lt;b&gt;XGBoost&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px;&quot;&gt;Gradient Boosting&lt;br&gt;Capture interactions&lt;br&gt;non-lineaires entre predictions&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#bbdefb;strokeColor=#1976d2;shadow=1;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="750" y="695" width="220" height="80" as="geometry"/>
+        </mxCell>
+
+        <!-- Arrows from OOF to meta models -->
+        <mxCell id="c_ridge" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeWidth=2;strokeColor=#1976d2;" edge="1" source="oof" target="ridge" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="c_xgb" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeWidth=2;strokeColor=#1976d2;" edge="1" source="oof" target="xgb" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- Final Predictions -->
+        <mxCell id="final" value="&lt;font style=&quot;font-size:14px;&quot;&gt;&lt;b&gt;Predictions Finales&lt;/b&gt;&lt;/font&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px;&quot;&gt;Accuracy | AUC-ROC | F1-Score | Temps&lt;br&gt;Comparaison Stacking vs Individuels vs Blending&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;shadow=1;fontSize=12;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="430" y="830" width="440" height="70" as="geometry"/>
+        </mxCell>
+
+        <!-- Arrows to final -->
+        <mxCell id="d_ridge" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeWidth=2;strokeColor=#b85450;" edge="1" source="ridge" target="final" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="d_xgb" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeWidth=2;strokeColor=#b85450;" edge="1" source="xgb" target="final" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- ===== SIDE: OOF Explanation ===== -->
+        <mxCell id="oof_explain" value="&lt;b&gt;Processus OOF (Out-of-Fold)&lt;/b&gt;&lt;br&gt;&lt;hr&gt;&lt;font style=&quot;font-size:10px;&quot;&gt;Pour chaque fold k (1..5) :&lt;br&gt;1. Train sur folds != k&lt;br&gt;2. Predict sur fold k &amp;rarr; OOF&lt;br&gt;3. Predict sur test &amp;rarr; moyenne&lt;br&gt;&lt;br&gt;Pas de data leakage&lt;br&gt;100% donnees utilisees&lt;br&gt;Estimations stables&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF3E0;strokeColor=#E65100;shadow=1;fontSize=11;align=left;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="20" y="545" width="210" height="170" as="geometry"/>
+        </mxCell>
+
+        <!-- ===== SIDE: Blending Comparison ===== -->
+        <mxCell id="blend_box" value="&lt;b&gt;Comparaison : Blending&lt;/b&gt;&lt;br&gt;&lt;hr&gt;&lt;font style=&quot;font-size:10px;&quot;&gt;Split: 75% / 25% holdout&lt;br&gt;Train &amp;rarr; Blend &amp;rarr; Test&lt;br&gt;&lt;br&gt;Perd ~25% donnees&lt;br&gt;Variance plus elevee&lt;br&gt;Plus simple a implementer&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F3E5F5;strokeColor=#7B1FA2;shadow=1;fontSize=11;align=left;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="1230" y="545" width="210" height="150" as="geometry"/>
+        </mxCell>
+
+        <!-- ===== SIDE: Cross-Dataset Comparison ===== -->
+        <mxCell id="cross_compare" value="&lt;b&gt;Comparaison Cross-Dataset&lt;/b&gt;&lt;br&gt;&lt;hr&gt;&lt;font style=&quot;font-size:10px;&quot;&gt;&lt;b&gt;Ames Housing :&lt;/b&gt;&lt;br&gt;2930 obs | Corr haute (~0.94)&lt;br&gt;Gain stacking: faible&lt;br&gt;&lt;br&gt;&lt;b&gt;Pima Diabetes :&lt;/b&gt;&lt;br&gt;768 obs | Corr moy-haute (~0.88)&lt;br&gt;Gain stacking: negatif&lt;br&gt;&lt;br&gt;&lt;b&gt;Bank Marketing :&lt;/b&gt;&lt;br&gt;41188 obs | Corr moyenne&lt;br&gt;Baseline: 90% (bon pour stacking)&lt;br&gt;&lt;br&gt;&lt;b&gt;Conclusion cle:&lt;/b&gt;&lt;br&gt;Taille donnees = succes stacking&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8EAF6;strokeColor=#3F51B5;shadow=1;fontSize=11;align=left;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="1230" y="730" width="230" height="250" as="geometry"/>
+        </mxCell>
+
+        <!-- Legend -->
+        <mxCell id="legend_title" value="&lt;b&gt;Legende&lt;/b&gt;" style="text;html=1;align=left;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="30" y="800" width="80" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="leg1" value="" style="rounded=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="30" y="825" width="20" height="15" as="geometry"/>
+        </mxCell>
+        <mxCell id="leg1t" value="Donnees d'entree (3 datasets)" style="text;html=1;align=left;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="55" y="823" width="170" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="leg2" value="" style="rounded=1;fillColor=#c8e6c9;strokeColor=#388e3c;" vertex="1" parent="1">
+          <mxGeometry x="30" y="845" width="20" height="15" as="geometry"/>
+        </mxCell>
+        <mxCell id="leg2t" value="Niveau 0 (Base)" style="text;html=1;align=left;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="55" y="843" width="100" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="leg3" value="" style="rounded=1;fillColor=#fff9c4;strokeColor=#f9a825;" vertex="1" parent="1">
+          <mxGeometry x="30" y="865" width="20" height="15" as="geometry"/>
+        </mxCell>
+        <mxCell id="leg3t" value="Meta-Features (OOF)" style="text;html=1;align=left;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="55" y="863" width="130" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="leg4" value="" style="rounded=1;fillColor=#bbdefb;strokeColor=#1976d2;" vertex="1" parent="1">
+          <mxGeometry x="30" y="885" width="20" height="15" as="geometry"/>
+        </mxCell>
+        <mxCell id="leg4t" value="Niveau 1 (Meta)" style="text;html=1;align=left;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="55" y="883" width="100" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="leg5" value="" style="rounded=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="30" y="905" width="20" height="15" as="geometry"/>
+        </mxCell>
+        <mxCell id="leg5t" value="Sortie Finale" style="text;html=1;align=left;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="55" y="903" width="100" height="20" as="geometry"/>
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

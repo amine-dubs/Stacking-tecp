@@ -1,0 +1,12 @@
+\babel@toc {french}{}\relax 
+\beamer@sectionintoc {1}{Introduction}{3}{0}{1}
+\beamer@sectionintoc {2}{Fondements th\'eoriques}{4}{0}{2}
+\beamer@sectionintoc {3}{Architecture propos\'ee}{6}{0}{3}
+\beamer@sectionintoc {4}{M\'ethodologie exp\'erimentale}{7}{0}{4}
+\beamer@sectionintoc {5}{Pr\'esentation des datasets}{9}{0}{5}
+\beamer@sectionintoc {6}{R\'esultats exp\'erimentaux}{11}{0}{6}
+\beamer@sectionintoc {7}{Comparaison multi-datasets}{17}{0}{7}
+\beamer@sectionintoc {8}{Analyse de la diversit\'e}{19}{0}{8}
+\beamer@sectionintoc {9}{Discussion}{22}{0}{9}
+\beamer@sectionintoc {10}{Conclusions et recommandations}{24}{0}{10}
+\beamer@sectionintoc {11}{Livrables}{27}{0}{11}
