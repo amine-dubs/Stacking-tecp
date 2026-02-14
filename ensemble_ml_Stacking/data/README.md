@@ -28,6 +28,31 @@ data <- make_ames()
 - **Valeurs manquantes** : Présentes dans certaines colonnes (garage, sous-sol) → imputées par la médiane
 - **Équilibre des classes** : 50/50 (par construction, car seuil sur la médiane)
 
+### Préprocessing appliqué (Ames)
+Les étapes de préparation utilisées dans le notebook pour `Ames` sont :
+
+- **Sélection de features** : sous-ensemble de variables numériques et catégorielles informatives (ex. `Overall_Qual`, `Gr_Liv_Area`, `Neighborhood`, `Kitchen_Qual`, ...).
+- **Imputation** : valeurs manquantes des colonnes numériques imputées par la médiane.
+- **Encodage** : variables catégorielles transformées en indicatrices (one-hot) via `caret::dummyVars`.
+- **Suppression de features non informatives** : suppression des colonnes à variance quasi-nulle (`nearZeroVar`).
+- **Normalisation** : centrage et mise à l'échelle (`preProcess` avec `center` et `scale`) avant l'entraînement des modèles.
+
+Extrait de code (notebook) montrant l'approche :
+```r
+# selected_numeric / selected_categorical lists defined
+for (col in selected_numeric) {
+  ames_selected[[col]][is.na(ames_selected[[col]])] <- median(ames_selected[[col]], na.rm = TRUE)
+}
+dummies <- dummyVars(Price_Class ~ ., data = ames_selected)
+ames_encoded <- predict(dummies, newdata = ames_selected)
+ames_encoded <- as.data.frame(ames_encoded)
+nzv <- nearZeroVar(ames_encoded)
+if (length(nzv) > 0) ames_encoded <- ames_encoded[, -nzv]
+\n+# Scaling is applied later in the pipeline with preProcess(center, scale)
+```
+
+Ces étapes produisent `X_train`/`X_test` encodés et imputés, puis les modèles sont entraînés sur la version centrée/normalisée.
+
 ### Référence
 **De Cock, D. (2011)**. *Ames, Iowa: Alternative to the Boston Housing Data*. Journal of Statistics Education, 19(3).
 
