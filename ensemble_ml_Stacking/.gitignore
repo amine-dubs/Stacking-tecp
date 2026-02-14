@@ -27,3 +27,11 @@ Thumbs.db
 # Data cache
 data/*.csv
 !data/.gitkeep
+
+# Generated outputs and LaTeX auxiliary files
+output/*.csv
+*.aux
+*.log
+*.nav
+*.out
+tmpclaude-*
