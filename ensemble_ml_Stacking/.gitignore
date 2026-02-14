@@ -35,3 +35,5 @@ output/*.csv
 *.nav
 *.out
 tmpclaude-*
+*.snm
+*.toc
