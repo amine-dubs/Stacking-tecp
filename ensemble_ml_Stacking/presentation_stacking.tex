@@ -46,14 +46,15 @@
 % --- Metadata ---
 \title[Stacking Ensemble]{Stacking Generalis\'e \`a 2 Niveaux :\\
 Analyse Comparative Multi-Datasets}
-\subtitle{Techniques Pr\'edictives -- Projet de Fin de Module}
-\author[Bellatreche \& Rezegia]{Mohamed Amine \textsc{Bellatreche} \and Soltan \textsc{Rezegia}}
+\subtitle{Techniques Pr\'edictives -- mini Projet de Module}
+\author[Bellatreche \& Rezaiguia]{Mohamed Amine \textsc{Bellatreche} \and Soltane \textsc{Rezaiguia}}
 \institute[USTO]{Universit\'e USTO -- ING 4 Data Science\\[2pt]
 \textit{Module~: Techniques Pr\'edictives}\\
 \textit{Encadr\'e par~: Pr. \textsc{Bouziane} H.}}
 \date{Ann\'ee universitaire 2024--2025}
 
 \begin{document}
+\sloppy
 
 % ============================================================
 % PAGE DE GARDE
@@ -178,7 +179,7 @@ Le stacking fonctionne si les mod\`eles de base commettent des erreurs \textbf{n
 
 \begin{frame}{Architecture du Stacking \`a 2 niveaux}
 \begin{center}
-\includegraphics[width=0.82\textwidth]{diagrams/01_stacking_architecture.drawio.png}
+\includegraphics[width=0.92\textwidth,height=0.75\textheight,keepaspectratio]{diagrams/01_stacking_architecture.drawio.png}
 \end{center}
 \end{frame}
 
@@ -188,7 +189,7 @@ Le stacking fonctionne si les mod\`eles de base commettent des erreurs \textbf{n
 
 \begin{frame}{Pipeline exp\'erimental complet}
 \begin{center}
-\includegraphics[width=0.48\textwidth]{diagrams/03_methodology_workflow.drawio.png}
+\includegraphics[width=0.92\textwidth,height=0.75\textheight,keepaspectratio]{diagrams/03_methodology_workflow.drawio.png}
 \end{center}
 \end{frame}
 
@@ -343,7 +344,7 @@ Na\"ive Bayes & 0.9128 & 0.9743 & 0.9101 \\
 \end{itemize}
 \end{column}
 \begin{column}{0.48\textwidth}
-\includegraphics[width=\textwidth]{output/roc_curves_ames.png}
+\includegraphics[width=\textwidth,height=0.62\textheight,keepaspectratio]{output/roc_curves_ames.png}
 \end{column}
 \end{columns}
 \end{frame}
@@ -351,10 +352,10 @@ Na\"ive Bayes & 0.9128 & 0.9743 & 0.9101 \\
 \begin{frame}{Dataset~1~: Ames Housing -- Visualisations}
 \begin{columns}[c]
 \begin{column}{0.48\textwidth}
-\includegraphics[width=\textwidth]{output/accuracy_comparison_ames.png}
+\includegraphics[width=\textwidth,height=0.52\textheight,keepaspectratio]{output/accuracy_comparison_ames.png}
 \end{column}
 \begin{column}{0.48\textwidth}
-\includegraphics[width=\textwidth]{output/corrplot_ames.png}
+\includegraphics[width=\textwidth,height=0.52\textheight,keepaspectratio]{output/corrplot_ames.png}
 \end{column}
 \end{columns}
 \smallskip
@@ -395,7 +396,7 @@ SVM & 0.7190 & 0.7711 & 0.5567 \\
 \end{itemize}
 \end{column}
 \begin{column}{0.48\textwidth}
-\includegraphics[width=\textwidth]{output/roc_curves_pima.png}
+\includegraphics[width=\textwidth,height=0.62\textheight,keepaspectratio]{output/roc_curves_pima.png}
 \end{column}
 \end{columns}
 \end{frame}
@@ -403,10 +404,10 @@ SVM & 0.7190 & 0.7711 & 0.5567 \\
 \begin{frame}{Dataset~2~: Pima Diabetes -- Visualisations}
 \begin{columns}[c]
 \begin{column}{0.48\textwidth}
-\includegraphics[width=\textwidth]{output/accuracy_comparison_pima.png}
+\includegraphics[width=\textwidth,height=0.52\textheight,keepaspectratio]{output/accuracy_comparison_pima.png}
 \end{column}
 \begin{column}{0.48\textwidth}
-\includegraphics[width=\textwidth]{output/corrplot_pima.png}
+\includegraphics[width=\textwidth,height=0.52\textheight,keepaspectratio]{output/corrplot_pima.png}
 \end{column}
 \end{columns}
 \smallskip
@@ -447,7 +448,7 @@ Na\"ive Bayes & 0.8873 & 0.7967 & -- \\
 \end{itemize}
 \end{column}
 \begin{column}{0.48\textwidth}
-\includegraphics[width=\textwidth]{output/roc_curves_bank_marketing.png}
+\includegraphics[width=\textwidth,height=0.62\textheight,keepaspectratio]{output/roc_curves_bank_marketing.png}
 \end{column}
 \end{columns}
 \end{frame}
@@ -455,10 +456,10 @@ Na\"ive Bayes & 0.8873 & 0.7967 & -- \\
 \begin{frame}{Dataset~3~: Bank Marketing -- Visualisations}
 \begin{columns}[c]
 \begin{column}{0.48\textwidth}
-\includegraphics[width=\textwidth]{output/accuracy_comparison_bank_marketing.png}
+\includegraphics[width=\textwidth,height=0.52\textheight,keepaspectratio]{output/accuracy_comparison_bank_marketing.png}
 \end{column}
 \begin{column}{0.48\textwidth}
-\includegraphics[width=\textwidth]{output/corrplot_bank_marketing.png}
+\includegraphics[width=\textwidth,height=0.52\textheight,keepaspectratio]{output/corrplot_bank_marketing.png}
 \end{column}
 \end{columns}
 \smallskip
@@ -473,14 +474,14 @@ Cette diversit\'e permet au stacking d'exploiter des signaux compl\'ementaires, 
 
 \begin{frame}{Vue d'ensemble~: Stacking vs Individuels}
 \begin{center}
-\includegraphics[width=0.95\textwidth]{diagrams/02_results_comparison.drawio.png}
+\includegraphics[width=0.95\textwidth,height=0.74\textheight,keepaspectratio]{diagrams/02_results_comparison.drawio.png}
 \end{center}
 \end{frame}
 
 \begin{frame}{Gains du stacking par dataset}
 \begin{columns}[c]
 \begin{column}{0.55\textwidth}
-\includegraphics[width=\textwidth]{output/comparison_gains.png}
+\includegraphics[width=\textwidth,height=0.60\textheight,keepaspectratio]{output/comparison_gains.png}
 \end{column}
 \begin{column}{0.42\textwidth}
 \small
@@ -515,7 +516,7 @@ Cette diversit\'e permet au stacking d'exploiter des signaux compl\'ementaires, 
 
 \begin{frame}{Corr\'elation des pr\'edictions~: facteur d\'eterminant}
 \begin{center}
-\includegraphics[width=0.92\textwidth]{output/comparison_correlations.png}
+\includegraphics[width=0.92\textwidth,height=0.70\textheight,keepaspectratio]{output/comparison_correlations.png}
 \end{center}
 \smallskip
 \centering\small
@@ -524,7 +525,7 @@ Cette diversit\'e permet au stacking d'exploiter des signaux compl\'ementaires, 
 
 \begin{frame}{Corr\'elation $\leftrightarrow$ gain du stacking}
 \begin{center}
-\includegraphics[width=0.62\textwidth]{diagrams/05_correlation_vs_performance.drawio.png}
+\includegraphics[width=0.90\textwidth,height=0.66\textheight,keepaspectratio]{diagrams/05_correlation_vs_performance.drawio.png}
 \end{center}
 \medskip
 \centering\small
@@ -533,7 +534,7 @@ Relation observ\'ee~: plus la corr\'elation entre mod\`eles de base est forte, m
 
 \begin{frame}{Distribution des probabilit\'es OOF -- Ames Housing}
 \begin{center}
-\includegraphics[width=0.78\textwidth]{output/oof_distributions_ames.png}
+\includegraphics[width=0.90\textwidth,height=0.68\textheight,keepaspectratio]{output/oof_distributions_ames.png}
 \end{center}
 \smallskip
 \centering\small
@@ -549,16 +550,16 @@ Les distributions OOF montrent une bonne s\'eparation des classes pour la majori
 \begin{column}{0.48\textwidth}
 \begin{table}[h]
 \centering
-\small
-\begin{tabular}{l r}
+\scriptsize
+\begin{tabular}{l r r r}
 \toprule
-\textbf{Dataset} & \textbf{OOF -- Blend (pp)} \\
+\textbf{Dataset} & \textbf{OOF} & \textbf{Blending} & \textbf{$\Delta$ (pp)} \\
 \midrule
-Ames Housing & \textcolor{stackgreen}{+0.85} \\
-Pima Diabetes & \textcolor{stackred}{$-$1.96} \\
-Bank Marketing & \textcolor{stackgreen}{+0.10} \\
+Ames Housing & 0.9453 & 0.9368 & \textcolor{stackgreen}{+0.85} \\
+Pima Diabetes & 0.7320 & 0.7516 & \textcolor{stackred}{$-$1.96} \\
+Bank Marketing & 0.9034 & 0.9024 & \textcolor{stackgreen}{+0.10} \\
 \midrule
-\textbf{Moyenne} & \textcolor{stackred}{$-$0.34} \\
+\textbf{Moyenne} & 0.8602 & 0.8636 & \textcolor{stackred}{$-$0.34} \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -630,7 +631,7 @@ Sur Bank Marketing, le SVM prend \`a lui seul \textbf{1h28} sur les 5 folds, ce 
 
 \begin{frame}{Insights cl\'es}
 \begin{center}
-\includegraphics[width=0.82\textwidth]{diagrams/04_key_findings.drawio.png}
+\includegraphics[width=0.92\textwidth,height=0.74\textheight,keepaspectratio]{diagrams/04_key_findings.drawio.png}
 \end{center}
 \end{frame}
 
@@ -801,7 +802,7 @@ Moro, S., Cortez, P. \& Rita, P. (2014).
 
 \vfill
 \small
-Mohamed Amine \textsc{Bellatreche} \& Soltan \textsc{Rezegia}\\
+Mohamed Amine \textsc{Bellatreche} \& Soltane \textsc{Rezaiguia}\\
 USTO -- ING~4 Data Science\\
 Techniques Pr\'edictives -- Pr. \textsc{Bouziane} H.
 \vfill

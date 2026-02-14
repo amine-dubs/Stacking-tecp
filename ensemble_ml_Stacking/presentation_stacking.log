@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2025.11.1)  14 FEB 2026 00:47
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2025.11.1)  14 FEB 2026 11:36
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1238,22 +1238,22 @@ Overfull \hbox (9.39256pt too wide) in paragraph at lines 56--56
  []
 
 
-Overfull \hbox (9.39256pt too wide) in paragraph at lines 63--63
+Overfull \hbox (9.39256pt too wide) in paragraph at lines 64--64
 [][][][]  
  []
 
 
 LaTeX Font Warning: Font shape `T1/cmss/m/sc' undefined
-(Font)              using `T1/cmss/m/n' instead on input line 63.
+(Font)              using `T1/cmss/m/n' instead on input line 64.
 
 
 LaTeX Font Warning: Font shape `T1/cmss/m/scit' undefined
-(Font)              using `T1/cmss/m/sc' instead on input line 63.
+(Font)              using `T1/cmss/m/sc' instead on input line 64.
 
 [1
 
 {C:/Users/LENOVO/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}]
-Overfull \hbox (9.39256pt too wide) in paragraph at lines 70--70
+Overfull \hbox (9.39256pt too wide) in paragraph at lines 71--71
 [][][][]  
  []
 
@@ -1265,7 +1265,7 @@ Overfull \hbox (9.39256pt too wide) has occurred while \output is active
 [2
 
 ]
-Overfull \hbox (9.39256pt too wide) in paragraph at lines 101--101
+Overfull \hbox (9.39256pt too wide) in paragraph at lines 102--102
 [][][][]  
  []
 
@@ -1277,23 +1277,23 @@ Overfull \hbox (9.39256pt too wide) has occurred while \output is active
 [3
 
 ]
-Overfull \hbox (9.39256pt too wide) in paragraph at lines 136--136
+Overfull \hbox (9.39256pt too wide) in paragraph at lines 137--137
 [][][][]  
  []
 
-LaTeX Font Info:    Trying to load font information for U+msa on input line 136
+LaTeX Font Info:    Trying to load font information for U+msa on input line 137
 .
 (C:\Users\LENOVO\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 136
+LaTeX Font Info:    Trying to load font information for U+msb on input line 137
 .
 
 (C:\Users\LENOVO\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 LaTeX Font Info:    Trying to load font information for OT1+mathkerncmss on inp
-ut line 136.
+ut line 137.
 
 (C:\Users\LENOVO\AppData\Local\Programs\MiKTeX\tex/latex/sansmathaccent\ot1math
 kerncmss.fd
@@ -1307,7 +1307,7 @@ Overfull \hbox (9.39256pt too wide) has occurred while \output is active
 [4
 
 ]
-Overfull \hbox (9.39256pt too wide) in paragraph at lines 173--173
+Overfull \hbox (9.39256pt too wide) in paragraph at lines 174--174
 [][][][]  
  []
 
@@ -1319,7 +1319,7 @@ Overfull \hbox (9.39256pt too wide) has occurred while \output is active
 [5
 
 ]
-Overfull \hbox (9.39256pt too wide) in paragraph at lines 183--183
+Overfull \hbox (9.39256pt too wide) in paragraph at lines 184--184
 [][][][]  
  []
 
@@ -1328,12 +1328,8 @@ pt>
 File: diagrams/01_stacking_architecture.drawio.png Graphic file (type png)
 <use diagrams/01_stacking_architecture.drawio.png>
 Package pdftex.def Info: diagrams/01_stacking_architecture.drawio.png  used on 
-input line 183.
-(pdftex.def)             Requested size: 355.46008pt x 271.51295pt.
-
-Overfull \vbox (68.48793pt too high) detected at line 183
- []
-
+input line 184.
+(pdftex.def)             Requested size: 238.32315pt x 182.04338pt.
 
 Overfull \hbox (9.39256pt too wide) has occurred while \output is active
 [][][][] 
@@ -1342,7 +1338,7 @@ Overfull \hbox (9.39256pt too wide) has occurred while \output is active
 [6
 
  <./diagrams/01_stacking_architecture.drawio.png>]
-Overfull \hbox (9.39256pt too wide) in paragraph at lines 193--193
+Overfull \hbox (9.39256pt too wide) in paragraph at lines 194--194
 [][][][]  
  []
 
@@ -1351,12 +1347,8 @@ t>
 File: diagrams/03_methodology_workflow.drawio.png Graphic file (type png)
 <use diagrams/03_methodology_workflow.drawio.png>
 Package pdftex.def Info: diagrams/03_methodology_workflow.drawio.png  used on i
-nput line 193.
-(pdftex.def)             Requested size: 208.07048pt x 311.97041pt.
-
-Overfull \vbox (108.94539pt too high) detected at line 193
- []
-
+nput line 194.
+(pdftex.def)             Requested size: 121.41731pt x 182.05019pt.
 
 Overfull \hbox (9.39256pt too wide) has occurred while \output is active
 [][][][] 
@@ -1365,16 +1357,16 @@ Overfull \hbox (9.39256pt too wide) has occurred while \output is active
 [7
 
  <./diagrams/03_methodology_workflow.drawio.png>]
-Overfull \hbox (9.39256pt too wide) in paragraph at lines 234--234
+Overfull \hbox (9.39256pt too wide) in paragraph at lines 235--235
 [][][][]  
  []
 
 LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 2
-34.
+35.
 (C:\Users\LENOVO\AppData\Local\Programs\MiKTeX\tex/latex/base\t1cmtt.fd
 File: t1cmtt.fd 2023/04/13 v2.5m Standard LaTeX font definitions
 )
-Overfull \vbox (6.55057pt too high) detected at line 234
+Overfull \vbox (6.55057pt too high) detected at line 235
  []
 
 
@@ -1385,7 +1377,7 @@ Overfull \hbox (9.39256pt too wide) has occurred while \output is active
 [8
 
 ]
-Overfull \hbox (9.39256pt too wide) in paragraph at lines 266--266
+Overfull \hbox (9.39256pt too wide) in paragraph at lines 267--267
 [][][][]  
  []
 
@@ -1397,7 +1389,7 @@ Overfull \hbox (9.39256pt too wide) has occurred while \output is active
 [9
 
 ]
-Overfull \hbox (9.39256pt too wide) in paragraph at lines 309--309
+Overfull \hbox (9.39256pt too wide) in paragraph at lines 310--310
 [][][][]  
  []
 
@@ -1409,15 +1401,15 @@ Overfull \hbox (9.39256pt too wide) has occurred while \output is active
 [10
 
 ]
-Overfull \hbox (9.39256pt too wide) in paragraph at lines 349--349
+Overfull \hbox (9.39256pt too wide) in paragraph at lines 350--350
 [][][][]  
  []
 
 <output/roc_curves_ames.png, id=350, 722.7pt x 505.89pt>
 File: output/roc_curves_ames.png Graphic file (type png)
 <use output/roc_curves_ames.png>
-Package pdftex.def Info: output/roc_curves_ames.png  used on input line 349.
-(pdftex.def)             Requested size: 208.07048pt x 145.64679pt.
+Package pdftex.def Info: output/roc_curves_ames.png  used on input line 350.
+(pdftex.def)             Requested size: 208.06686pt x 145.64679pt.
 
 Overfull \hbox (9.39256pt too wide) has occurred while \output is active
 [][][][] 
@@ -1426,7 +1418,7 @@ Overfull \hbox (9.39256pt too wide) has occurred while \output is active
 [11
 
  <./output/roc_curves_ames.png>]
-Overfull \hbox (9.39256pt too wide) in paragraph at lines 364--364
+Overfull \hbox (9.39256pt too wide) in paragraph at lines 365--365
 [][][][]  
  []
 
@@ -1434,13 +1426,13 @@ Overfull \hbox (9.39256pt too wide) in paragraph at lines 364--364
 File: output/accuracy_comparison_ames.png Graphic file (type png)
 <use output/accuracy_comparison_ames.png>
 Package pdftex.def Info: output/accuracy_comparison_ames.png  used on input lin
-e 364.
-(pdftex.def)             Requested size: 208.07048pt x 124.84012pt.
+e 365.
+(pdftex.def)             Requested size: 208.06686pt x 124.84012pt.
 <output/corrplot_ames.png, id=359, 481.8pt x 421.575pt>
 File: output/corrplot_ames.png Graphic file (type png)
 <use output/corrplot_ames.png>
-Package pdftex.def Info: output/corrplot_ames.png  used on input line 364.
-(pdftex.def)             Requested size: 208.07048pt x 182.0585pt.
+Package pdftex.def Info: output/corrplot_ames.png  used on input line 365.
+(pdftex.def)             Requested size: 144.2544pt x 126.2226pt.
 
 Overfull \hbox (9.39256pt too wide) has occurred while \output is active
 [][][][] 
@@ -1450,15 +1442,15 @@ Overfull \hbox (9.39256pt too wide) has occurred while \output is active
 
  <./output/accuracy_comparison_ames.png> <./output/corrplot_ames.png (PNG copy)
 >]
-Overfull \hbox (9.39256pt too wide) in paragraph at lines 401--401
+Overfull \hbox (9.39256pt too wide) in paragraph at lines 402--402
 [][][][]  
  []
 
 <output/roc_curves_pima.png, id=367, 722.7pt x 505.89pt>
 File: output/roc_curves_pima.png Graphic file (type png)
 <use output/roc_curves_pima.png>
-Package pdftex.def Info: output/roc_curves_pima.png  used on input line 401.
-(pdftex.def)             Requested size: 208.07048pt x 145.64679pt.
+Package pdftex.def Info: output/roc_curves_pima.png  used on input line 402.
+(pdftex.def)             Requested size: 208.06686pt x 145.64679pt.
 
 Overfull \hbox (9.39256pt too wide) has occurred while \output is active
 [][][][] 
@@ -1467,7 +1459,7 @@ Overfull \hbox (9.39256pt too wide) has occurred while \output is active
 [13
 
  <./output/roc_curves_pima.png>]
-Overfull \hbox (9.39256pt too wide) in paragraph at lines 416--416
+Overfull \hbox (9.39256pt too wide) in paragraph at lines 417--417
 [][][][]  
  []
 
@@ -1475,17 +1467,13 @@ Overfull \hbox (9.39256pt too wide) in paragraph at lines 416--416
 File: output/accuracy_comparison_pima.png Graphic file (type png)
 <use output/accuracy_comparison_pima.png>
 Package pdftex.def Info: output/accuracy_comparison_pima.png  used on input lin
-e 416.
-(pdftex.def)             Requested size: 208.07048pt x 124.84012pt.
+e 417.
+(pdftex.def)             Requested size: 208.06686pt x 124.84012pt.
 <output/corrplot_pima.png, id=377, 481.8pt x 421.575pt>
 File: output/corrplot_pima.png Graphic file (type png)
 <use output/corrplot_pima.png>
-Package pdftex.def Info: output/corrplot_pima.png  used on input line 416.
-(pdftex.def)             Requested size: 208.07048pt x 182.0585pt.
-
-Overfull \vbox (5.25394pt too high) detected at line 416
- []
-
+Package pdftex.def Info: output/corrplot_pima.png  used on input line 417.
+(pdftex.def)             Requested size: 144.2544pt x 126.2226pt.
 
 Overfull \hbox (9.39256pt too wide) has occurred while \output is active
 [][][][] 
@@ -1495,7 +1483,7 @@ Overfull \hbox (9.39256pt too wide) has occurred while \output is active
 
  <./output/accuracy_comparison_pima.png> <./output/corrplot_pima.png (PNG copy)
 >]
-Overfull \hbox (9.39256pt too wide) in paragraph at lines 453--453
+Overfull \hbox (9.39256pt too wide) in paragraph at lines 454--454
 [][][][]  
  []
 
@@ -1503,8 +1491,8 @@ Overfull \hbox (9.39256pt too wide) in paragraph at lines 453--453
 File: output/roc_curves_bank_marketing.png Graphic file (type png)
 <use output/roc_curves_bank_marketing.png>
 Package pdftex.def Info: output/roc_curves_bank_marketing.png  used on input li
-ne 453.
-(pdftex.def)             Requested size: 208.07048pt x 145.64679pt.
+ne 454.
+(pdftex.def)             Requested size: 208.06686pt x 145.64679pt.
 
 Overfull \hbox (9.39256pt too wide) has occurred while \output is active
 [][][][] 
@@ -1513,7 +1501,7 @@ Overfull \hbox (9.39256pt too wide) has occurred while \output is active
 [15
 
  <./output/roc_curves_bank_marketing.png>]
-Overfull \hbox (9.39256pt too wide) in paragraph at lines 468--468
+Overfull \hbox (9.39256pt too wide) in paragraph at lines 469--469
 [][][][]  
  []
 
@@ -1521,18 +1509,14 @@ Overfull \hbox (9.39256pt too wide) in paragraph at lines 468--468
 File: output/accuracy_comparison_bank_marketing.png Graphic file (type png)
 <use output/accuracy_comparison_bank_marketing.png>
 Package pdftex.def Info: output/accuracy_comparison_bank_marketing.png  used on
- input line 468.
-(pdftex.def)             Requested size: 208.07048pt x 124.84012pt.
+ input line 469.
+(pdftex.def)             Requested size: 208.06686pt x 124.84012pt.
 <output/corrplot_bank_marketing.png, id=394, 481.8pt x 421.575pt>
 File: output/corrplot_bank_marketing.png Graphic file (type png)
 <use output/corrplot_bank_marketing.png>
 Package pdftex.def Info: output/corrplot_bank_marketing.png  used on input line
- 468.
-(pdftex.def)             Requested size: 208.07048pt x 182.0585pt.
-
-Overfull \vbox (7.4409pt too high) detected at line 468
- []
-
+ 469.
+(pdftex.def)             Requested size: 144.2544pt x 126.2226pt.
 
 Overfull \hbox (9.39256pt too wide) has occurred while \output is active
 [][][][] 
@@ -1542,7 +1526,7 @@ Overfull \hbox (9.39256pt too wide) has occurred while \output is active
 
  <./output/accuracy_comparison_bank_marketing.png> <./output/corrplot_bank_mark
 eting.png (PNG copy)>]
-Overfull \hbox (9.39256pt too wide) in paragraph at lines 478--478
+Overfull \hbox (9.39256pt too wide) in paragraph at lines 479--479
 [][][][]  
  []
 
@@ -1551,12 +1535,8 @@ Overfull \hbox (9.39256pt too wide) in paragraph at lines 478--478
 File: diagrams/02_results_comparison.drawio.png Graphic file (type png)
 <use diagrams/02_results_comparison.drawio.png>
 Package pdftex.def Info: diagrams/02_results_comparison.drawio.png  used on inp
-ut line 478.
-(pdftex.def)             Requested size: 411.8085pt x 285.71066pt.
-
-Overfull \vbox (82.68564pt too high) detected at line 478
- []
-
+ut line 479.
+(pdftex.def)             Requested size: 258.896pt x 179.62082pt.
 
 Overfull \hbox (9.39256pt too wide) has occurred while \output is active
 [][][][] 
@@ -1565,15 +1545,15 @@ Overfull \hbox (9.39256pt too wide) has occurred while \output is active
 [17
 
  <./diagrams/02_results_comparison.drawio.png>]
-Overfull \hbox (9.39256pt too wide) in paragraph at lines 510--510
+Overfull \hbox (9.39256pt too wide) in paragraph at lines 511--511
 [][][][]  
  []
 
 <output/comparison_gains.png, id=410, 867.24pt x 505.89pt>
 File: output/comparison_gains.png Graphic file (type png)
 <use output/comparison_gains.png>
-Package pdftex.def Info: output/comparison_gains.png  used on input line 510.
-(pdftex.def)             Requested size: 238.41754pt x 139.06999pt.
+Package pdftex.def Info: output/comparison_gains.png  used on input line 511.
+(pdftex.def)             Requested size: 238.40573pt x 139.06999pt.
 
 Overfull \hbox (9.39256pt too wide) has occurred while \output is active
 [][][][] 
@@ -1582,7 +1562,7 @@ Overfull \hbox (9.39256pt too wide) has occurred while \output is active
 [18
 
  <./output/comparison_gains.png>]
-Overfull \hbox (9.39256pt too wide) in paragraph at lines 523--523
+Overfull \hbox (9.39256pt too wide) in paragraph at lines 524--524
 [][][][]  
  []
 
@@ -1590,8 +1570,8 @@ Overfull \hbox (9.39256pt too wide) in paragraph at lines 523--523
 File: output/comparison_correlations.png Graphic file (type png)
 <use output/comparison_correlations.png>
 Package pdftex.def Info: output/comparison_correlations.png  used on input line
- 523.
-(pdftex.def)             Requested size: 398.80452pt x 132.9321pt.
+ 524.
+(pdftex.def)             Requested size: 398.7963pt x 132.9321pt.
 
 Overfull \hbox (9.39256pt too wide) has occurred while \output is active
 [][][][] 
@@ -1600,7 +1580,7 @@ Overfull \hbox (9.39256pt too wide) has occurred while \output is active
 [19
 
  <./output/comparison_correlations.png>]
-Overfull \hbox (9.39256pt too wide) in paragraph at lines 532--532
+Overfull \hbox (9.39256pt too wide) in paragraph at lines 533--533
 [][][][]  
  []
 
@@ -1610,12 +1590,8 @@ File: diagrams/05_correlation_vs_performance.drawio.png Graphic file (type png)
 
 <use diagrams/05_correlation_vs_performance.drawio.png>
 Package pdftex.def Info: diagrams/05_correlation_vs_performance.drawio.png  use
-d on input line 532.
-(pdftex.def)             Requested size: 268.75798pt x 224.18768pt.
-
-Overfull \vbox (63.10663pt too high) detected at line 532
- []
-
+d on input line 533.
+(pdftex.def)             Requested size: 192.03966pt x 160.19786pt.
 
 Overfull \hbox (9.39256pt too wide) has occurred while \output is active
 [][][][] 
@@ -1624,7 +1600,7 @@ Overfull \hbox (9.39256pt too wide) has occurred while \output is active
 [20
 
  <./diagrams/05_correlation_vs_performance.drawio.png>]
-Overfull \hbox (9.39256pt too wide) in paragraph at lines 541--541
+Overfull \hbox (9.39256pt too wide) in paragraph at lines 542--542
 [][][][]  
  []
 
@@ -1632,12 +1608,8 @@ Overfull \hbox (9.39256pt too wide) in paragraph at lines 541--541
 File: output/oof_distributions_ames.png Graphic file (type png)
 <use output/oof_distributions_ames.png>
 Package pdftex.def Info: output/oof_distributions_ames.png  used on input line 
-541.
-(pdftex.def)             Requested size: 338.11702pt x 236.6799pt.
-
-Overfull \vbox (61.59885pt too high) detected at line 541
- []
-
+542.
+(pdftex.def)             Requested size: 235.80103pt x 165.06071pt.
 
 Overfull \hbox (9.39256pt too wide) has occurred while \output is active
 [][][][] 
@@ -1646,7 +1618,7 @@ Overfull \hbox (9.39256pt too wide) has occurred while \output is active
 [21
 
  <./output/oof_distributions_ames.png>]
-Overfull \hbox (9.39256pt too wide) in paragraph at lines 588--588
+Overfull \hbox (9.39256pt too wide) in paragraph at lines 589--589
 [][][][]  
  []
 
@@ -1658,7 +1630,7 @@ Overfull \hbox (9.39256pt too wide) has occurred while \output is active
 [22
 
 ]
-Overfull \hbox (9.39256pt too wide) in paragraph at lines 625--625
+Overfull \hbox (9.39256pt too wide) in paragraph at lines 626--626
 [][][][]  
  []
 
@@ -1670,20 +1642,16 @@ Overfull \hbox (9.39256pt too wide) has occurred while \output is active
 [23
 
 ]
-Overfull \hbox (9.39256pt too wide) in paragraph at lines 635--635
+Overfull \hbox (9.39256pt too wide) in paragraph at lines 636--636
 [][][][]  
  []
 
-<diagrams/04_key_findings.drawio.png, id=494, 1212.53pt x 885.3075pt>
+<diagrams/04_key_findings.drawio.png, id=495, 1212.53pt x 885.3075pt>
 File: diagrams/04_key_findings.drawio.png Graphic file (type png)
 <use diagrams/04_key_findings.drawio.png>
 Package pdftex.def Info: diagrams/04_key_findings.drawio.png  used on input lin
-e 635.
-(pdftex.def)             Requested size: 355.46008pt x 259.52888pt.
-
-Overfull \vbox (56.50386pt too high) detected at line 635
- []
-
+e 636.
+(pdftex.def)             Requested size: 246.01703pt x 179.625pt.
 
 Overfull \hbox (9.39256pt too wide) has occurred while \output is active
 [][][][] 
@@ -1692,7 +1660,7 @@ Overfull \hbox (9.39256pt too wide) has occurred while \output is active
 [24
 
  <./diagrams/04_key_findings.drawio.png>]
-Overfull \hbox (9.39256pt too wide) in paragraph at lines 666--666
+Overfull \hbox (9.39256pt too wide) in paragraph at lines 667--667
 [][][][]  
  []
 
@@ -1704,7 +1672,7 @@ Overfull \hbox (9.39256pt too wide) has occurred while \output is active
 [25
 
 ]
-Overfull \hbox (9.39256pt too wide) in paragraph at lines 692--692
+Overfull \hbox (9.39256pt too wide) in paragraph at lines 693--693
 [][][][]  
  []
 
@@ -1716,12 +1684,12 @@ Overfull \hbox (9.39256pt too wide) has occurred while \output is active
 [26
 
 ]
-Overfull \hbox (9.39256pt too wide) in paragraph at lines 742--742
+Overfull \hbox (9.39256pt too wide) in paragraph at lines 743--743
 [][][][]  
  []
 
 
-Overfull \vbox (34.2737pt too high) detected at line 742
+Overfull \vbox (34.2737pt too high) detected at line 743
  []
 
 
@@ -1732,12 +1700,12 @@ Overfull \hbox (9.39256pt too wide) has occurred while \output is active
 [27
 
 ]
-Overfull \hbox (9.39256pt too wide) in paragraph at lines 788--788
+Overfull \hbox (9.39256pt too wide) in paragraph at lines 789--789
 [][][][]  
  []
 
 
-Overfull \vbox (123.77881pt too high) detected at line 788
+Overfull \vbox (123.77881pt too high) detected at line 789
  []
 
 
@@ -1749,7 +1717,7 @@ Overfull \hbox (9.39256pt too wide) has occurred while \output is active
 
  <C:/Users/LENOVO/AppData/Local/Programs/MiKTeX/tex/latex/beamer/beamericonarti
 cle.pdf>]
-Overfull \hbox (9.39256pt too wide) in paragraph at lines 809--809
+Overfull \hbox (9.39256pt too wide) in paragraph at lines 810--810
 [][][][]  
  []
 
@@ -1784,7 +1752,7 @@ Here is how much of TeX's memory you used:
  50501 multiletter control sequences out of 15000+600000
  583512 words of font info for 97 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 128i,15n,123p,398b,1253s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 128i,15n,123p,398b,1245s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\LENOVO\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecs
 x2488.pk> <C:\Users\LENOVO\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi
 600\ecsx0800.pk> <C:\Users\LENOVO\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen
@@ -1804,15 +1772,16 @@ c/dpi600\ecss1440.pk><C:/Users/LENOVO/AppData/Local/Programs/MiKTeX/fonts/type1
 /public/amsfonts/cm/cmex10.pfb><C:/Users/LENOVO/AppData/Local/Programs/MiKTeX/f
 onts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/LENOVO/AppData/Local/Program
 s/MiKTeX/fonts/type1/public/amsfonts/cm/cmss10.pfb><C:/Users/LENOVO/AppData/Loc
-al/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmssi10.pfb><C:/Users/LENOVO/
-AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmssi8.pfb><C:/Use
-rs/LENOVO/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.p
-fb><C:/Users/LENOVO/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/c
-m/cmsy8.pfb><C:/Users/LENOVO/AppData/Local/Programs/MiKTeX/fonts/type1/public/a
-msfonts/symbols/msam10.pfb>
-Output written on presentation_stacking.pdf (29 pages, 1520143 bytes).
+al/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmss8.pfb><C:/Users/LENOVO/Ap
+pData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmssi10.pfb><C:/User
+s/LENOVO/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmssi8.pf
+b><C:/Users/LENOVO/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm
+/cmsy10.pfb><C:/Users/LENOVO/AppData/Local/Programs/MiKTeX/fonts/type1/public/a
+msfonts/cm/cmsy8.pfb><C:/Users/LENOVO/AppData/Local/Programs/MiKTeX/fonts/type1
+/public/amsfonts/symbols/msam10.pfb>
+Output written on presentation_stacking.pdf (29 pages, 1529611 bytes).
 PDF statistics:
- 1368 PDF objects out of 1440 (max. 8388607)
+ 1377 PDF objects out of 1440 (max. 8388607)
  78 named destinations out of 1000 (max. 500000)
  1166 words of extra memory for PDF output out of 10000 (max. 10000000)
 
